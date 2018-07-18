@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SandDExpertGroupMapper">
+    <resultMap id="SandDExpertGroupResultMap" type="com.spider.lottery.pojo.SandDExpertGroup">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="expertname" jdbcType="VARCHAR" property="expertname"/>
+
+        <result column="singDan" jdbcType="VARCHAR" property="singDan"/>
+        <result column="fiveDanV" jdbcType="INTEGER" property="fiveDanV"/>
+
+        <result column="sumDanV" jdbcType="INTEGER" property="sumDanV"/>
+        <result column="kuaDanV" jdbcType="INTEGER" property="kuaDanV"/>
+
+    </resultMap>
+
+
+    <delete id="deleteSandDExpertGroup" parameterType="java.lang.Integer">
+      delete from sandp.sandexpertgroup
+    </delete>
+
+    <sql id="BaseColumnList">
+        id,issue,expertname,singDan,fiveDanV,sumDanV,kuaDanV
+    </sql>
+
+    <insert id="insertSandDExpertGroup" parameterType="com.spider.lottery.pojo.SandDExpertGroup">
+    insert into sandp.sandexpertgroup (
+        id,issue,expertname,singDan,fiveDanV,sumDanV,kuaDanV
+      )
+    values (
+      #{id,jdbcType=INTEGER},#{issue,jdbcType=VARCHAR}, #{expertname,jdbcType=VARCHAR},#{singDan,jdbcType=VARCHAR},
+      #{fiveDanV,jdbcType=VARCHAR},#{sumDanV,jdbcType=VARCHAR},#{kuaDanV,jdbcType=VARCHAR}
+      )
+    </insert>
+
+    <select id="selectSandDExpertGroup" resultMap="SandDExpertGroupResultMap">
+        select * from sandp.sandexpertgroup
+    </select>
+
+    <select id="selectSanDkillbyCountExpert" resultType="java.lang.Integer">
+        select COUNT(*)
+        from sandp.sanddankill Where expertname = #{expertname,jdbcType=VARCHAR} GROUP BY expertname
+    </select>
+
+    <select id="selectSanDkillbyCounttime" resultType="java.lang.Integer">
+        select COUNT(*)
+        from sandp.sanddankill  Where expertname = #{expertname,jdbcType=VARCHAR} AND issue>=#{issue,jdbcType=VARCHAR}
+        GROUP BY expertname
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SsqAnalysysMapper">
+    <resultMap id="ssqanalysysResultMap" type="com.spider.lottery.pojo.SsqAnalyse">
+        <id column="expertname" jdbcType="VARCHAR" property="expertname"/>
+        <result column="one" jdbcType="INTEGER" property="one"/>
+        <result column="two" jdbcType="INTEGER" property="two"/>
+        <result column="three" jdbcType="INTEGER" property="three"/>
+        <result column="four" jdbcType="INTEGER" property="four"/>
+        <result column="five" jdbcType="INTEGER" property="five"/>
+        <result column="six" jdbcType="INTEGER" property="six"/>
+        <result column="seven" jdbcType="INTEGER" property="seven"/>
+        <result column="eight" jdbcType="INTEGER" property="eight"/>
+        <result column="nine" jdbcType="INTEGER" property="nine"/>
+        <result column="ten" jdbcType="INTEGER" property="ten"/>
+        <result column="eleven" jdbcType="INTEGER" property="eleven"/>
+        <result column="twelve" jdbcType="INTEGER" property="twelve"/>
+        <result column="thirteen" jdbcType="INTEGER" property="thirteen"/>
+        <result column="fourteen" jdbcType="INTEGER" property="fourteen"/>
+        <result column="fifteen" jdbcType="INTEGER" property="fifteen"/>
+        <result column="sixteen" jdbcType="INTEGER" property="sixteen"/>
+        <result column="seventeen" jdbcType="INTEGER" property="seventeen"/>
+        <result column="eighteen" jdbcType="INTEGER" property="eighteen"/>
+        <result column="nineteen" jdbcType="INTEGER" property="nineteen"/>
+        <result column="twenty" jdbcType="INTEGER" property="twenty"/>
+        <result column="twentyone" jdbcType="INTEGER" property="twentyone"/>
+        <result column="twentytwo" jdbcType="INTEGER" property="twentytwo"/>
+        <result column="twentythree" jdbcType="INTEGER" property="twentythree"/>
+        <result column="twentyfour" jdbcType="INTEGER" property="twentyfour"/>
+        <result column="twentyfive" jdbcType="INTEGER" property="twentyfive"/>
+        <result column="twentysix" jdbcType="INTEGER" property="twentysix"/>
+        <result column="twentyseven" jdbcType="INTEGER" property="twentyseven"/>
+        <result column="twentyeight" jdbcType="INTEGER" property="twentyeight"/>
+        <result column="twentynine" jdbcType="INTEGER" property="twentyeight"/>
+        <result column="thirty" jdbcType="INTEGER" property="twentynine"/>
+        <result column="pert80" jdbcType="INTEGER" property="pert80"/>
+        <result column="pert90" jdbcType="INTEGER" property="pert90"/>
+
+    </resultMap>
+
+
+
+    <insert id="insertSSQAnalysys" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        insert into ssqanaly (
+        <include refid="selectColumnList"/>
+        )
+    VALUES (#{expertname,jdbcType=VARCHAR},#{one,jdbcType=INTEGER},#{two,jdbcType=INTEGER},#{three,jdbcType=INTEGER},#{four,jdbcType=INTEGER}
+        ,#{five,jdbcType=INTEGER},#{six,jdbcType=INTEGER},#{seven,jdbcType=INTEGER},#{eight,jdbcType=INTEGER}
+        ,#{nine,jdbcType=INTEGER},#{ten,jdbcType=INTEGER},#{eleven,jdbcType=INTEGER},#{twelve,jdbcType=INTEGER}
+        ,#{thirteen,jdbcType=INTEGER},#{fourteen,jdbcType=INTEGER},#{fifteen,jdbcType=INTEGER},#{sixteen,jdbcType=INTEGER}
+        ,#{seventeen,jdbcType=INTEGER},#{eighteen,jdbcType=INTEGER},#{nineteen,jdbcType=INTEGER},#{twenty,jdbcType=INTEGER}
+        ,#{twentyone,jdbcType=INTEGER},#{twentytwo,jdbcType=INTEGER},#{twentythree,jdbcType=INTEGER},#{twentyfour,jdbcType=INTEGER}
+        ,#{twentyfive,jdbcType=INTEGER},#{twentysix,jdbcType=INTEGER},#{twentyseven,jdbcType=INTEGER}
+        ,#{twentyeight,jdbcType=INTEGER},#{twentynine,jdbcType=INTEGER},#{thirty,jdbcType=INTEGER},#{pert80,jdbcType=INTEGER},#{pert90,jdbcType=INTEGER})
+
+    </insert>
+
+    <update id="updateSSQAnalysys" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqanaly
+        SET one=#{one,jdbcType=INTEGER},two=#{two,jdbcType=INTEGER},three=#{three,jdbcType=INTEGER},four=#{four,jdbcType=INTEGER}
+        ,five=#{five,jdbcType=INTEGER},six=#{six,jdbcType=INTEGER},seven=#{seven,jdbcType=INTEGER},eight=#{eight,jdbcType=INTEGER}
+        ,nine=#{nine,jdbcType=INTEGER},ten=#{ten,jdbcType=INTEGER},eleven=#{eleven,jdbcType=INTEGER},twelve=#{twelve,jdbcType=INTEGER}
+        ,thirteen=#{thirteen,jdbcType=INTEGER},fourteen=#{fourteen,jdbcType=INTEGER},fifteen=#{fifteen,jdbcType=INTEGER},sixteen=#{sixteen,jdbcType=INTEGER}
+        ,seventeen=#{seventeen,jdbcType=INTEGER},eighteen=#{eighteen,jdbcType=INTEGER},nineteen=#{nineteen,jdbcType=INTEGER},twenty=#{twenty,jdbcType=INTEGER}
+        ,twentyone=#{twentyone,jdbcType=INTEGER},twentytwo=#{twentytwo,jdbcType=INTEGER},twentythree=#{twentythree,jdbcType=INTEGER},twentyfour=#{twentyfour,jdbcType=INTEGER}
+        ,twentyfive=#{twentyfive,jdbcType=INTEGER},twentysix=#{twentysix,jdbcType=INTEGER},twentyseven=#{twentyseven,jdbcType=INTEGER}
+        ,twentyeight=#{twentyeight,jdbcType=INTEGER},twentynine=#{twentynine,jdbcType=INTEGER},thirty=#{thirty,jdbcType=INTEGER}
+        WHERE expertname = #{expertname,jdbcType=VARCHAR}
+    </update>
+
+
+    <update id="updateSSQAnalyPer" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqanaly
+        SET pert80=#{pert80,jdbcType=INTEGER},pert90=#{pert90,jdbcType=INTEGER}
+        WHERE expertname = #{expertname,jdbcType=VARCHAR}
+    </update>
+
+    <sql id="selectColumnList">
+        expertname,one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,
+        fifteen,sixteen,seventeen,eighteen,nineteen,twenty,twentyone,twentytwo,twentythree,twentyfour,
+        twentyfive,twentysix,twentyseven,twentyeight,twentynine,thirty,pert80,pert90
+    </sql>
+
+    <select id="selectByexpert"  resultMap="ssqanalysysResultMap" parameterType="com.spider.lottery.ssqservice.SsqCalService" >
+        select
+        <include refid="selectColumnList"/>
+        from ssqanaly
+        where expertname = #{expertname,jdbcType=VARCHAR}
+     </select>
+
+
+
+</mapper>

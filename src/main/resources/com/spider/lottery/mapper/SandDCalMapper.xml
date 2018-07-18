@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SandDanCalMapper">
+    <resultMap id="sandDCalResultMap" type="com.spider.lottery.pojo.SandDankill">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="expertname" jdbcType="VARCHAR" property="expertname"/>
+        <result column="sanDV" jdbcType="VARCHAR" property="sanDV"/>
+        <result column="shijiDV" jdbcType="VARCHAR" property="shijiDV"/>
+        <result column="sanDgc" jdbcType="INTEGER" property="sanDgc"/>
+        <result column="sanDsum" jdbcType="INTEGER" property="sanDsum"/>
+        <result column="sanDkd" jdbcType="INTEGER" property="sanDkd"/>
+        <result column="shijiDsum" jdbcType="INTEGER" property="shijiDsum"/>
+        <result column="shijiDkd" jdbcType="INTEGER" property="shijiDkd"/>
+        <result column="mtstat" jdbcType="INTEGER" property="mtstat"/>
+
+        <result column="singDan" jdbcType="VARCHAR" property="singDan"/>
+        <result column="spicerock" jdbcType="INTEGER" property="spicerock"/>
+        <result column="singDankd" jdbcType="INTEGER" property="singDankd"/>
+        <result column="singDanlasthit" jdbcType="INTEGER" property="singDanlasthit"/>
+        <result column="singDanhit" jdbcType="INTEGER" property="singDanhit"/>
+        <result column="singDanconhit" jdbcType="INTEGER" property="singDanconhit"/>
+
+        <result column="singDanEMA3" jdbcType="DOUBLE" property="singDanEMA3"/>
+        <result column="singDanEMA7" jdbcType="DOUBLE" property="singDanEMA7"/>
+        <result column="singDanDIF" jdbcType="DOUBLE" property="singDanDIF"/>
+        <result column="singDanDEA" jdbcType="DOUBLE" property="singDanDEA"/>
+        <result column="singDanMACD" jdbcType="DOUBLE" property="singDanMACD"/>
+        <result column="singDFortEMA3" jdbcType="DOUBLE" property="singDFortEMA3"/>
+        <result column="singDFortEMA7" jdbcType="DOUBLE" property="singDFortEMA7"/>
+        <result column="singDFortDIF" jdbcType="DOUBLE" property="singDFortDIF"/>
+        <result column="singDFortDEA" jdbcType="DOUBLE" property="singDFortDEA"/>
+        <result column="singDFortMACD" jdbcType="DOUBLE" property="singDFortMACD"/>
+        <result column="singDanlastMACD" jdbcType="DOUBLE" property="singDanlastMACD"/>
+        <result column="singDFortlastMACD" jdbcType="DOUBLE" property="singDFortlastMACD"/>
+        <result column="singDFortstat" jdbcType="INTEGER" property="singDFortstat"/>
+
+
+        <result column="fiveDanV" jdbcType="INTEGER" property="fiveDanV"/>
+        <result column="fiveDandiv" jdbcType="INTEGER" property="fiveDandiv"/>
+        <result column="fiveDanskewn" jdbcType="INTEGER" property="fiveDanskewn"/>
+        <result column="fiveDanacV" jdbcType="INTEGER" property="fiveDanacV"/>
+        <result column="fiveDanhit" jdbcType="INTEGER" property="fiveDanhit"/>
+        <result column="fiveDanlasthit" jdbcType="INTEGER" property="fiveDanlasthit"/>
+        <result column="fiveDanconhit" jdbcType="INTEGER" property="fiveDanconhit"/>
+        <result column="fiveDFortEMA3" jdbcType="DOUBLE" property="fiveDFortEMA3"/>
+        <result column="fiveDFortEMA7" jdbcType="DOUBLE" property="fiveDFortEMA7"/>
+        <result column="fiveDanDIF" jdbcType="DOUBLE" property="fiveDanDIF"/>
+        <result column="fiveDanDEA" jdbcType="DOUBLE" property="fiveDanDEA"/>
+        <result column="fiveDFortMACD" jdbcType="DOUBLE" property="fiveDFortMACD"/>
+        <result column="fiveDFortlastMACD" jdbcType="DOUBLE" property="fiveDFortlastMACD"/>
+        <result column="fiveDFortstat" jdbcType="INTEGER" property="fiveDFortstat"/>
+
+        <result column="sumDanV" jdbcType="INTEGER" property="sumDanV"/>
+        <result column="sumDandiv" jdbcType="INTEGER" property="sumDandiv"/>
+        <result column="sumDanskewn" jdbcType="INTEGER" property="sumDanskewn"/>
+        <result column="sumDanacV" jdbcType="INTEGER" property="sumDanacV"/>
+        <result column="sumDanhit" jdbcType="INTEGER" property="sumDanhit"/>
+        <result column="sumDanlasthit" jdbcType="INTEGER" property="sumDanlasthit"/>
+        <result column="sumDanconhit" jdbcType="INTEGER" property="sumDanconhit"/>
+        <result column="sumDFortEMA3" jdbcType="DOUBLE" property="sumDFortEMA3"/>
+        <result column="sumDFortEMA7" jdbcType="DOUBLE" property="sumDFortEMA7"/>
+        <result column="sumDanDIF" jdbcType="DOUBLE" property="sumDanDIF"/>
+        <result column="sumDanDEA" jdbcType="DOUBLE" property="sumDanDEA"/>
+        <result column="sumDFortMACD" jdbcType="DOUBLE" property="sumDFortMACD"/>
+        <result column="sumDFortlastMACD" jdbcType="DOUBLE" property="sumDFortlastMACD"/>
+        <result column="sumDFortstat" jdbcType="INTEGER" property="sumDFortstat"/>
+
+        <result column="kuaDanV" jdbcType="INTEGER" property="kuaDanV"/>
+        <result column="kuaDandiv" jdbcType="INTEGER" property="kuaDandiv"/>
+        <result column="kuaDanskewn" jdbcType="INTEGER" property="kuaDanskewn"/>
+        <result column="kuaDanacV" jdbcType="INTEGER" property="kuaDanacV"/>
+        <result column="kuaDanhit" jdbcType="INTEGER" property="kuaDanhit"/>
+        <result column="kuaDanlasthit" jdbcType="INTEGER" property="kuaDanlasthit"/>
+        <result column="kuaDanconhit" jdbcType="INTEGER" property="kuaDanconhit"/>
+        <result column="kuaDFortEMA3" jdbcType="DOUBLE" property="kuaDFortEMA3"/>
+        <result column="kuaDFortEMA7" jdbcType="DOUBLE" property="kuaDFortEMA7"/>
+        <result column="kuaDanDIF" jdbcType="DOUBLE" property="kuaDanDIF"/>
+        <result column="kuaDanDEA" jdbcType="DOUBLE" property="kuaDanDEA"/>
+        <result column="kuaDFortMACD" jdbcType="DOUBLE" property="kuaDFortMACD"/>
+        <result column="kuaDFortlastMACD" jdbcType="DOUBLE" property="kuaDFortlastMACD"/>
+        <result column="kuaDFortstat" jdbcType="INTEGER" property="kuaDFortstat"/>
+
+    </resultMap>
+
+    <sql id="selectHitList">
+        id,issue,expertname,singDanhit,fiveDanhit,sumDanhit,kuaDanhit,singDanconhit, singDanlasthit,
+        fiveDanconhit,fiveDanlasthit,sumDanlasthit,sumDanconhit,kuaDanlasthit,kuaDanconhit
+    </sql>
+
+    <select id="selectIdByDVasc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where singDanhit = #{singDanhit,jdbcType=INTEGER} ORDER BY id ASC limit 1
+    </select>
+
+    <select id="selectIdByDVdesc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where singDanhit = #{singDanhit,jdbcType=INTEGER} ORDER BY id DESC limit 1
+    </select>
+
+    <select id="selectByID"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select issue, sanDV, sanDsum, sanDkd, singDan, fiveDanV, sumDanV, kuaDanV from sandp.sanddankill
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateSanDhit"  parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        update sandp.sanddankill
+        SET sandp.sanddankill.singDanhit= #{singDanhit,jdbcType=INTEGER},sandp.sanddankill.fiveDanhit= #{fiveDanhit,jdbcType=INTEGER},
+        sandp.sanddankill.sumDanhit= #{sumDanhit,jdbcType=INTEGER},sandp.sanddankill.kuaDanhit= #{kuaDanhit,jdbcType=INTEGER}
+        WHERE sandp.sanddankill.id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectexpertByID"  resultType="String" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        SELECT expertname FROM sandp.sanddankill WHERE id BETWEEN #{startid,jdbcType=INTEGER} AND #{endid,jdbcType=INTEGER}
+        GROUP BY expertname ORDER BY id
+    </select>
+
+    <select id="selectIDbyExpHit"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        <include refid="selectHitList"/>
+        from sandp.sanddankill
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND singDanconhit = #{singDanconhit,jdbcType=INTEGER} AND id &lt;= #{endid,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectIDbyExpHitlast"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        <include refid="selectHitList"/>
+        from sandp.sanddankill
+        WHERE id &lt; #{expid,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,1
+    </select>
+
+    <update id="updateSanDconhit"  parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        update sandp.sanddankill
+        SET sandp.sanddankill.singDanlasthit= #{singDanlasthit,jdbcType=INTEGER},sandp.sanddankill.singDanconhit= #{singDanconhit,jdbcType=INTEGER},
+        sandp.sanddankill.fiveDanlasthit= #{fiveDanlasthit,jdbcType=INTEGER},sandp.sanddankill.fiveDanconhit= #{fiveDanconhit,jdbcType=INTEGER},
+        sandp.sanddankill.sumDanlasthit= #{sumDanlasthit,jdbcType=INTEGER},sandp.sanddankill.sumDanconhit= #{sumDanconhit,jdbcType=INTEGER},
+        sandp.sanddankill.kuaDanlasthit= #{kuaDanlasthit,jdbcType=INTEGER},sandp.sanddankill.kuaDanconhit= #{kuaDanconhit,jdbcType=INTEGER}
+        WHERE sandp.sanddankill.id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="selecthitbyExpIssue"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,singDanhit,fiveDanhit,sumDanhit,kuaDanhit,singDanlasthit,singDanconhit,fiveDanlasthit,fiveDanconhit
+        sumDanlasthit,sumDanconhit,kuaDanlasthit,kuaDanconhit
+        from sandp.sanddankill
+        WHERE issue = #{issue,jdbcType=VARCHAR} AND expertname = #{expertname,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectIDbyUpdateHit"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,singDanhit,fiveDanhit,sumDanhit,kuaDanhit,singDanlasthit,singDanconhit,fiveDanlasthit,fiveDanconhit,
+        sumDanlasthit,sumDanconhit,kuaDanlasthit,kuaDanconhit
+        from sandp.sanddankill
+        WHERE id &lt;= #{fid,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc
+    </select>
+
+    <select id="selectIdByRockasc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where spicerock = #{spicerock,jdbcType=INTEGER} ORDER BY id ASC limit 1
+    </select>
+
+    <select id="selectIdByRockdesc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where spicerock = #{spicerock,jdbcType=INTEGER} ORDER BY id DESC limit 1
+    </select>
+
+    <select id="selectIdBySinDEMA3asc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where singDanEMA3 = #{singDanEMA3,jdbcType=DOUBLE} ORDER BY id ASC limit 1
+    </select>
+
+    <select id="selectIdBySinDEMA3desc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where singDanEMA3 = #{singDanEMA3,jdbcType=DOUBLE} ORDER BY id DESC limit 1
+    </select>
+
+    <select id="selectIdBySinDFortEMA3asc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where singDFortEMA3 = #{singDFortEMA3,jdbcType=DOUBLE} ORDER BY id ASC limit 1
+    </select>
+
+    <select id="selectIdBySinDFortEMA3desc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where singDFortEMA3 = #{singDFortEMA3,jdbcType=DOUBLE} ORDER BY id DESC limit 1
+    </select>
+
+    <select id="selectIDbyExpDIV"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,spicerock,singDankd,singDan
+        from sandp.sanddankill
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND spicerock = #{spicerock,jdbcType=INTEGER} AND id &lt;= #{endid,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectIDbyExpHDIVlast"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,spicerock,singDankd,singDan
+        from sandp.sanddankill
+        WHERE id &lt; #{expid,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,1
+    </select>
+
+    <update id="updateSanDACV"  parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        update sandp.sanddankill
+        SET sandp.sanddankill.fiveDandiv= #{fiveDandiv,jdbcType=INTEGER},sandp.sanddankill.fiveDanskewn= #{fiveDanskewn,jdbcType=INTEGER},
+        sandp.sanddankill.fiveDanacV= #{fiveDanacV,jdbcType=INTEGER},sandp.sanddankill.sumDandiv= #{sumDandiv,jdbcType=INTEGER},
+        sandp.sanddankill.sumDanskewn= #{sumDanskewn,jdbcType=INTEGER},sandp.sanddankill.sumDanacV= #{sumDanacV,jdbcType=INTEGER},
+        sandp.sanddankill.kuaDandiv= #{kuaDandiv,jdbcType=INTEGER},sandp.sanddankill.kuaDanskewn= #{kuaDanskewn,jdbcType=INTEGER},
+        sandp.sanddankill.kuaDanacV= #{kuaDanacV,jdbcType=INTEGER}
+        WHERE sandp.sanddankill.id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSanDRock"  parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        update sandp.sanddankill
+        SET sandp.sanddankill.spicerock= #{spicerock,jdbcType=INTEGER},sandp.sanddankill.singDankd= #{singDankd,jdbcType=INTEGER}
+        WHERE sandp.sanddankill.id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectIDbyUpdateACV"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,spicerock,singDankd,singDan
+        from sandp.sanddankill
+        WHERE id &lt;= #{fid,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc
+    </select>
+    <select id="selectIDbyEMA3"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,singDan,singDanhit,singDanEMA3,singDanEMA7,singDanDIF,singDanDEA,singDanMACD,singDFortEMA3,singDFortEMA7,
+        singDFortDIF,singDFortDEA,singDFortMACD,singDFortstat,singDanlastMACD,singDFortlastMACD,
+        fiveDanhit,fiveDFortEMA3,fiveDFortEMA7,fiveDanDIF,fiveDanDEA,fiveDFortMACD,fiveDFortstat,fiveDFortlastMACD,
+        sumDanhit,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortstat,sumDFortlastMACD,
+        kuaDanhit,kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,kuaDanDEA,kuaDFortMACD,kuaDFortstat,kuaDFortlastMACD
+        from sandp.sanddankill
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND singDanEMA3 = #{singDanEMA3,jdbcType=DOUBLE} AND id &lt;= #{endid,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectIDbyEMA3last7"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,singDan,singDanhit,singDanEMA3,singDanEMA7,singDanDIF,singDanDEA,singDanMACD,singDFortEMA3,singDFortEMA7,
+        singDFortDIF,singDFortDEA,singDFortMACD,singDFortstat,singDanlastMACD,singDFortlastMACD,
+        fiveDanhit,fiveDFortEMA3,fiveDFortEMA7,fiveDanDIF,fiveDanDEA,fiveDFortMACD,fiveDFortstat,fiveDFortlastMACD,
+        sumDanhit,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortstat,sumDFortlastMACD,
+        kuaDanhit,kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,kuaDanDEA,kuaDFortMACD,kuaDFortstat,kuaDFortlastMACD
+        from sandp.sanddankill
+        WHERE id &lt;= #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,7
+    </select>
+
+    <select id="selectIDbyEMA3last3"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,singDan,singDanhit,singDanEMA3,singDanEMA7,singDanDIF,singDanDEA,singDanMACD,singDFortEMA3,singDFortEMA7,
+        singDFortDIF,singDFortDEA,singDFortMACD,singDFortstat,singDanlastMACD,singDFortlastMACD,
+        fiveDanhit,fiveDFortEMA3,fiveDFortEMA7,fiveDanDIF,fiveDanDEA,fiveDFortMACD,fiveDFortstat,fiveDFortlastMACD,
+        sumDanhit,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortstat,sumDFortlastMACD,
+        kuaDanhit,kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,kuaDanDEA,kuaDFortMACD,kuaDFortstat,kuaDFortlastMACD
+        from sandp.sanddankill
+        WHERE id &lt;= #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,3
+    </select>
+
+
+    <select id="selectIDbyDEAlast5"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select
+        id,issue,expertname,singDan,singDanhit,singDanEMA3,singDanEMA7,singDanDIF,singDanDEA,singDanMACD,singDFortEMA3,singDFortEMA7,
+        singDFortDIF,singDFortDEA,singDFortMACD,singDFortstat,singDanlastMACD,singDFortlastMACD,
+        fiveDanhit,fiveDFortEMA3,fiveDFortEMA7,fiveDanDIF,fiveDanDEA,fiveDFortMACD,fiveDFortstat,fiveDFortlastMACD,
+        sumDanhit,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortstat,sumDFortlastMACD,
+        kuaDanhit,kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,kuaDanDEA,kuaDFortMACD,kuaDFortstat,kuaDFortlastMACD
+        from sandp.sanddankill
+        WHERE id &lt;= #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,5
+    </select>
+
+    <update id="updateSanDEMA"  parameterType="com.spider.lottery.sanDservice.SanDCalService">
+
+        update sandp.sanddankill
+        SET sandp.sanddankill.singDanEMA3= #{singDanEMA3,jdbcType=DOUBLE},sandp.sanddankill.singDanEMA7= #{singDanEMA7,jdbcType=DOUBLE},sandp.sanddankill.singDanDIF= #{singDanDIF,jdbcType=DOUBLE}
+        ,sandp.sanddankill.singDanDEA= #{singDanDEA,jdbcType=DOUBLE},sandp.sanddankill.singDanMACD=#{singDanMACD,jdbcType=DOUBLE},sandp.sanddankill.singDFortEMA3= #{singDFortEMA3,jdbcType=DOUBLE}
+        ,sandp.sanddankill.singDFortEMA7= #{singDFortEMA7,jdbcType=DOUBLE},sandp.sanddankill.singDFortDIF=#{singDFortDIF,jdbcType=DOUBLE},sandp.sanddankill.singDFortDEA=#{singDFortDEA,jdbcType=DOUBLE}
+        ,sandp.sanddankill.singDFortMACD= #{singDFortMACD,jdbcType=DOUBLE},sandp.sanddankill.singDFortstat= #{singDFortstat,jdbcType=INTEGER},sandp.sanddankill.singDanlastMACD= #{singDanlastMACD,jdbcType=DOUBLE}
+        ,sandp.sanddankill.singDFortlastMACD= #{singDFortlastMACD,jdbcType=DOUBLE}
+
+        ,sandp.sanddankill.fiveDFortEMA3= #{fiveDFortEMA3,jdbcType=DOUBLE},sandp.sanddankill.fiveDFortEMA7=#{fiveDFortEMA7,jdbcType=DOUBLE},sandp.sanddankill.fiveDanDIF= #{fiveDanDIF,jdbcType=DOUBLE}
+        ,sandp.sanddankill.fiveDanDEA= #{fiveDanDEA,jdbcType=DOUBLE},sandp.sanddankill.fiveDFortMACD=#{fiveDFortMACD,jdbcType=DOUBLE},sandp.sanddankill.fiveDFortstat=#{fiveDFortstat,jdbcType=INTEGER}
+        ,sandp.sanddankill.fiveDFortlastMACD= #{fiveDFortlastMACD,jdbcType=DOUBLE}
+
+
+        ,sandp.sanddankill.sumDFortEMA3= #{sumDFortEMA3,jdbcType=DOUBLE},sandp.sanddankill.sumDFortEMA7=#{sumDFortEMA7,jdbcType=DOUBLE},sandp.sanddankill.sumDanDIF= #{sumDanDIF,jdbcType=DOUBLE}
+        ,sandp.sanddankill.sumDanDEA= #{sumDanDEA,jdbcType=DOUBLE},sandp.sanddankill.sumDFortMACD=#{sumDFortMACD,jdbcType=DOUBLE},sandp.sanddankill.sumDFortstat=#{sumDFortstat,jdbcType=INTEGER}
+        ,sandp.sanddankill.sumDFortlastMACD= #{sumDFortlastMACD,jdbcType=DOUBLE}
+
+        ,sandp.sanddankill.kuaDFortEMA3= #{kuaDFortEMA3,jdbcType=DOUBLE},sandp.sanddankill.kuaDFortEMA7=#{kuaDFortEMA7,jdbcType=DOUBLE},sandp.sanddankill.kuaDanDIF= #{kuaDanDIF,jdbcType=DOUBLE}
+        ,sandp.sanddankill.kuaDanDEA= #{sumDanDEA,jdbcType=DOUBLE},sandp.sanddankill.kuaDFortMACD=#{kuaDFortMACD,jdbcType=DOUBLE},sandp.sanddankill.kuaDFortstat=#{kuaDFortstat,jdbcType=INTEGER}
+        ,sandp.sanddankill.kuaDFortlastMACD= #{kuaDFortlastMACD,jdbcType=DOUBLE}
+        WHERE sandp.sanddankill.id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

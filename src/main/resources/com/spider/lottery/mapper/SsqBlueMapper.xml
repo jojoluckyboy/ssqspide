@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SsqBlueMapper">
+    <resultMap id="ssqBlueResultMap" type="com.spider.lottery.pojo.SsqBlue">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="expertname" jdbcType="VARCHAR" property="expertname"/>
+        <result column="bluethree" jdbcType="VARCHAR" property="bluethree"/>
+        <result column="blue" jdbcType="VARCHAR" property="blue"/>
+        <result column="bluethreehit" jdbcType="INTEGER" property="bluethreehit"/>
+        <result column="lastbluethreehit" jdbcType="INTEGER" property="lastbluethreehit"/>
+        <result column="historymaxerrorpd" jdbcType="INTEGER" property="historymaxerrorpd"/>
+
+        <result column="bluekillone" jdbcType="VARCHAR" property="bluekillone"/>
+        <result column="bluekillonehit" jdbcType="INTEGER" property="bluekillonehit"/>
+        <result column="lastbluekillhit" jdbcType="INTEGER" property="lastbluekillhit"/>
+        <result column="hisbluekillmaxer" jdbcType="INTEGER" property="hisbluekillmaxer"/>
+
+        <result column="bluekillthree" jdbcType="VARCHAR" property="bluekillthree"/>
+        <result column="bluekillthreehit" jdbcType="INTEGER" property="bluekillthreehit"/>
+        <result column="lastbluekillthreehit" jdbcType="INTEGER" property="lastbluekillthreehit"/>
+        <result column="hisbluekillTrmaxer" jdbcType="INTEGER" property="hisbluekillTrmaxer"/>
+
+        <result column="avefive" jdbcType="INTEGER" property="avefive"/>
+        <result column="avefiveplushit" jdbcType="INTEGER" property="avefiveplushit"/>
+        <result column="lastavefiveplushit" jdbcType="INTEGER" property="lastavefiveplushit"/>
+        <result column="hisavefivemaxer" jdbcType="INTEGER" property="hisavefivemaxer"/>
+
+        <result column="sevenfuture" jdbcType="INTEGER" property="sevenfuture"/>
+        <result column="EMA2" jdbcType="DOUBLE" property="EMA2"/>
+        <result column="EMA7" jdbcType="DOUBLE" property="EMA7"/>
+        <result column="DIFF" jdbcType="DOUBLE" property="DIFF"/>
+        <result column="DEA" jdbcType="DOUBLE" property="DEA"/>
+        <result column="BAR" jdbcType="DOUBLE" property="BAR"/>
+        <result column="crosstate" jdbcType="VARCHAR" property="crosstate"/>
+        <result column="zeroaxis" jdbcType="VARCHAR" property="zeroaxis"/>
+        <result column="barstate" jdbcType="VARCHAR" property="barstate"/>
+
+        <result column="oebstate" jdbcType="VARCHAR" property="oebstate"/>
+        <result column="dividstate" jdbcType="VARCHAR" property="dividstate"/>
+
+    </resultMap>
+
+
+
+    <sql id="BaseColumnList">
+        id,issue,expertname,bluethree,blue,bluethreehit,lastbluethreehit,historymaxerrorpd,
+        bluekillone,bluekillonehit,lastbluekillhit,hisbluekillmaxer,bluekillthree,bluekillthreehit,
+        lastbluekillthreehit,hisbluekillTrmaxer,avefive,avefiveplushit,lastavefiveplushit,hisavefivemaxer,
+        sevenfuture,EMA2,EMA7,DIFF,DEA,BAR,crosstate,zeroaxis,barstate,oebstate,dividstate
+    </sql>
+    <insert id="insertSSQBlue" parameterType="com.spider.lottery.pojo.SsqBlue">
+        insert into ssqblue(
+        <include refid="BaseColumnList"/>
+        )
+        values (
+        #{id,jdbcType=INTEGER},#{issue,jdbcType=VARCHAR}, #{expertname,jdbcType=VARCHAR},
+        #{bluethree,jdbcType=VARCHAR}, #{blue,jdbcType=VARCHAR},#{bluethreehit,jdbcType=INTEGER},
+        #{lastbluethreehit,jdbcType=INTEGER}, #{historymaxerrorpd,jdbcType=INTEGER}, #{bluekillone,jdbcType=VARCHAR},
+        #{bluekillonehit,jdbcType=INTEGER}, #{lastbluekillhit,jdbcType=INTEGER}, #{hisbluekillmaxer,jdbcType=INTEGER},
+        #{bluekillthree,jdbcType=VARCHAR}, #{bluekillthreehit,jdbcType=INTEGER}, #{lastbluekillthreehit,jdbcType=INTEGER},
+        #{hisbluekillTrmaxer,jdbcType=INTEGER}, #{avefive,jdbcType=INTEGER}, #{avefiveplushit,jdbcType=INTEGER},
+        #{lastavefiveplushit,jdbcType=INTEGER}, #{hisavefivemaxer,jdbcType=INTEGER}, #{sevenfuture,jdbcType=INTEGER},
+        #{EMA2,jdbcType=DOUBLE}, #{EMA7,jdbcType=DOUBLE}, #{DIFF,jdbcType=DOUBLE},#{DEA,jdbcType=DOUBLE},
+        #{BAR,jdbcType=DOUBLE},#{crosstate,jdbcType=VARCHAR}, #{zeroaxis,jdbcType=VARCHAR}, #{barstate,jdbcType=VARCHAR},
+        #{oebstate,jdbcType=VARCHAR}, #{dividstate,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="insertSSQBlueBak" parameterType="com.spider.lottery.pojo.SsqBlue">
+        insert into ssqthred (
+        <include refid="BaseColumnList"/>
+        )
+        values (
+        #{id,jdbcType=INTEGER},#{issue,jdbcType=VARCHAR}, #{expertname,jdbcType=VARCHAR},
+        #{bluethree,jdbcType=VARCHAR}, #{blue,jdbcType=VARCHAR},#{bluethreehit,jdbcType=INTEGER},
+        #{lastbluethreehit,jdbcType=INTEGER}, #{historymaxerrorpd,jdbcType=INTEGER}, #{bluekillone,jdbcType=VARCHAR},
+        #{bluekillonehit,jdbcType=INTEGER}, #{lastbluekillhit,jdbcType=INTEGER}, #{hisbluekillmaxer,jdbcType=INTEGER},
+        #{bluekillthree,jdbcType=VARCHAR}, #{bluekillthreehit,jdbcType=INTEGER}, #{lastbluekillthreehit,jdbcType=INTEGER},
+        #{hisbluekillTrmaxer,jdbcType=INTEGER}, #{avefive,jdbcType=INTEGER}, #{avefiveplushit,jdbcType=INTEGER},
+        #{lastavefiveplushit,jdbcType=INTEGER}, #{hisavefivemaxer,jdbcType=INTEGER}, #{sevenfuture,jdbcType=INTEGER},
+        #{EMA2,jdbcType=DOUBLE}, #{EMA7,jdbcType=DOUBLE}, #{DIFF,jdbcType=DOUBLE},#{DEA,jdbcType=DOUBLE},
+        #{BAR,jdbcType=DOUBLE},#{crosstate,jdbcType=VARCHAR}, #{zeroaxis,jdbcType=VARCHAR}, #{barstate,jdbcType=VARCHAR},
+        #{oebstate,jdbcType=VARCHAR}, #{dividstate,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+</mapper>

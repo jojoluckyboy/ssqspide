@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SanDHistoryMapper">
+    <resultMap id="sandhistoryResultMap" type="com.spider.lottery.pojo.SanDHistory">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="date" jdbcType="VARCHAR" property="date"/>
+        <result column="sanD" jdbcType="VARCHAR" property="sanD"/>
+        <result column="shijiD" jdbcType="VARCHAR" property="shijiD"/>
+        <result column="baihund" jdbcType="VARCHAR" property="baihund"/>
+        <result column="shidecade" jdbcType="VARCHAR" property="shidecade"/>
+        <result column="gesingle" jdbcType="VARCHAR" property="gesingle"/>
+        <result column="sjbaihund" jdbcType="VARCHAR" property="sjbaihund"/>
+        <result column="sjshidecade" jdbcType="VARCHAR" property="sjshidecade"/>
+        <result column="sjgesingle" jdbcType="VARCHAR" property="sjgesingle"/>
+
+        <result column="xingtai3D" jdbcType="VARCHAR" property="xingtai3D"/>
+        <result column="xingtaisj" jdbcType="VARCHAR" property="xingtaisj"/>
+
+        <result column="sanDV" jdbcType="VARCHAR" property="sanDV"/>
+        <result column="shijiDV" jdbcType="VARCHAR" property="shijiDV"/>
+        <result column="sanDgc" jdbcType="INTEGER" property="sanDgc"/>
+        <result column="sanDsum" jdbcType="INTEGER" property="sanDsum"/>
+        <result column="sanDkd" jdbcType="INTEGER" property="sanDkd"/>
+        <result column="mtstat" jdbcType="INTEGER" property="mtstat"/>
+
+        <result column="flagContain" jdbcType="VARCHAR" property="flagContain"/>
+        <result column="flagBai" jdbcType="VARCHAR" property="flagBai"/>
+        <result column="shijiDsum" jdbcType="INTEGER" property="shijiDsum"/>
+        <result column="shijiDkd" jdbcType="INTEGER" property="shijiDkd"/>
+
+        <result column="baispice" jdbcType="INTEGER" property="baispice"/>
+        <result column="sjbaispice" jdbcType="INTEGER" property="sjbaispice"/>
+        <result column="shispice" jdbcType="INTEGER" property="shispice"/>
+        <result column="sjshispice" jdbcType="INTEGER" property="sjshispice"/>
+        <result column="gespice" jdbcType="INTEGER" property="gespice"/>
+        <result column="sjgespice" jdbcType="INTEGER" property="sjgespice"/>
+    </resultMap>
+
+
+    <delete id="deleteHistoryByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sandp.sandhistory
+    where issue = #{issue,jdbcType=VARCHAR}
+   </delete>
+
+    <sql id="BaseColumnList">
+        id,issue,date,sanD,shijiD,baihund,shidecade,gesingle,sjbaihund,sjshidecade,sjgesingle,xingtai3D,xingtaisj
+        ,sanDV,shijiDV,sanDgc,sanDsum,sanDkd,mtstat,flagContain,flagBai,shijiDsum,shijiDkd,baispice,sjbaispice,
+        shispice,sjshispice,gespice,sjgespice
+    </sql>
+
+    <insert id="insertSanDHistory" parameterType="com.spider.lottery.pojo.SanDHistory">
+    insert into sandp.sandhistory (
+        <include refid="BaseColumnList"/>
+      )
+    values (
+      #{id,jdbcType=INTEGER},#{issue,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR},
+      #{sanD,jdbcType=VARCHAR}, #{shijiD,jdbcType=VARCHAR}, #{baihund,jdbcType=VARCHAR},
+      #{shidecade,jdbcType=VARCHAR}, #{gesingle,jdbcType=VARCHAR}, #{sjbaihund,jdbcType=VARCHAR},
+      #{sjshidecade,jdbcType=VARCHAR}, #{sjgesingle,jdbcType=VARCHAR},#{xingtai3D,jdbcType=VARCHAR}, #{xingtaisj,jdbcType=VARCHAR},
+      #{sanDV,jdbcType=VARCHAR}, #{shijiDV,jdbcType=VARCHAR}, #{sanDgc,jdbcType=INTEGER},#{sanDsum,jdbcType=INTEGER},
+      #{sanDkd,jdbcType=INTEGER},#{mtstat,jdbcType=INTEGER},#{flagContain,jdbcType=VARCHAR}, #{flagBai,jdbcType=VARCHAR},
+      #{shijiDsum,jdbcType=INTEGER}, #{shijiDkd,jdbcType=INTEGER}, #{baispice,jdbcType=INTEGER}, #{sjbaispice,jdbcType=INTEGER},
+      #{shispice,jdbcType=INTEGER}, #{sjshispice,jdbcType=INTEGER},#{gespice,jdbcType=INTEGER}, #{sjgespice,jdbcType=INTEGER}
+      )
+    </insert>
+
+    <select id="selectSanDbLast" resultMap="sandhistoryResultMap">
+        select issue
+        from sandp.sandhistory where id=(select max(id) from sandp.sandhistory)
+    </select>
+
+    <select id="selectSanDhisSpice" resultMap="sandhistoryResultMap">
+        select baihund,shidecade,gesingle,sjbaihund,sjshidecade,sjgesingle
+        from sandp.sandhistory where id = (select max(id) from sandp.sandhistory)
+    </select>
+
+</mapper>

@@ -1,0 +1,43 @@
+<!--
+   Copyright© 2003-2016 浙江汇信科技有限公司, All Rights Reserved.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--使用注解，扫描项目中的包-->
+    <context:component-scan base-package="com.spider.lottery">
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+    <!--开启注解-->
+    <mvc:annotation-driven/>
+
+    <!--配置例外，不走springmvc过滤器-->
+    <!--配置静态资源，不被DispatchServelet处理-->
+    <mvc:resources mapping="/css/**" location="WEB-INF/views/css/" cache-period="0"/>
+    <mvc:resources mapping="/font/**" location="/WEB-INF/views/font/" cache-period="0"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/views/js/" cache-period="0"/>
+    <mvc:resources mapping="/img/**" location="/WEB-INF/views/img/" cache-period="0"/>
+
+    <!--定义跳转文件的前缀和后缀-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--定义非Controller类调用service方法-->
+   <!-- <bean id="SpringContextUtil" class="com.spider.lottery.Utils.SpringContextUtil" scope="singleton"></bean>-->
+    <bean id="SpiderHistory" class="com.spider.lottery.ssq.SpiderHistory"></bean>
+    <bean id="SsqPreTask" class="com.spider.lottery.precodition.task.SsqPreTask"></bean>
+</beans>

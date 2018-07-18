@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SsqRealTimeMapper">
+    <resultMap id="ssqRealTimeResultMap" type="com.spider.lottery.pojo.SsqRealTime">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <id column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="red1" jdbcType="VARCHAR" property="red1"/>
+        <result column="red2" jdbcType="VARCHAR" property="red2"/>
+        <result column="red3" jdbcType="VARCHAR" property="red3"/>
+        <result column="red4" jdbcType="VARCHAR" property="red4"/>
+        <result column="red5" jdbcType="VARCHAR" property="red5"/>
+        <result column="red6" jdbcType="VARCHAR" property="red6"/>
+        <result column="blue" jdbcType="VARCHAR" property="blue"/>
+        <result column="one1" jdbcType="VARCHAR" property="one1"/>
+        <result column="two" jdbcType="VARCHAR" property="two"/>
+        <result column="three" jdbcType="VARCHAR" property="three"/>
+        <result column="four" jdbcType="VARCHAR" property="four"/>
+        <result column="five" jdbcType="VARCHAR" property="five"/>
+        <result column="six" jdbcType="VARCHAR" property="six"/>
+        <result column="seven" jdbcType="VARCHAR" property="seven"/>
+        <result column="eight" jdbcType="VARCHAR" property="eight"/>
+        <result column="nine" jdbcType="VARCHAR" property="nine"/>
+        <result column="ten" jdbcType="VARCHAR" property="ten"/>
+        <result column="eleven" jdbcType="VARCHAR" property="eleven"/>
+        <result column="twelve" jdbcType="VARCHAR" property="twelve"/>
+        <result column="thirteen" jdbcType="VARCHAR" property="thirteen"/>
+        <result column="fourteen" jdbcType="VARCHAR" property="fourteen"/>
+        <result column="fifteen" jdbcType="VARCHAR" property="fifteen"/>
+        <result column="sixteen" jdbcType="VARCHAR" property="sixteen"/>
+        <result column="seventeen" jdbcType="VARCHAR" property="seventeen"/>
+        <result column="eighteen" jdbcType="VARCHAR" property="eighteen"/>
+        <result column="nineteen" jdbcType="VARCHAR" property="nineteen"/>
+        <result column="twenty" jdbcType="VARCHAR" property="twenty"/>
+        <result column="twentyone" jdbcType="VARCHAR" property="twentyone"/>
+        <result column="twentytwo" jdbcType="VARCHAR" property="twentytwo"/>
+        <result column="twentythree" jdbcType="VARCHAR" property="twentythree"/>
+        <result column="twentyfour" jdbcType="VARCHAR" property="twentyfour"/>
+        <result column="twentyfive" jdbcType="VARCHAR" property="twentyfive"/>
+        <result column="twentysix" jdbcType="VARCHAR" property="twentysix"/>
+        <result column="twentyseven" jdbcType="VARCHAR" property="twentyseven"/>
+        <result column="twentyeight" jdbcType="VARCHAR" property="twentyeight"/>
+        <result column="twentynine" jdbcType="VARCHAR" property="twentyeight"/>
+        <result column="thirty" jdbcType="VARCHAR" property="twentynine"/>
+        <result column="thirtyone" jdbcType="VARCHAR" property="thirtyone"/>
+        <result column="thirtytwo" jdbcType="VARCHAR" property="thirtytwo"/>
+        <result column="thirtythree" jdbcType="VARCHAR" property="thirtythree"/>
+        <result column="red1locate" jdbcType="VARCHAR" property="red1locate"/>
+        <result column="red2locate" jdbcType="VARCHAR" property="red2locate"/>
+        <result column="red3locate" jdbcType="VARCHAR" property="red3locate"/>
+        <result column="red4locate" jdbcType="VARCHAR" property="red4locate"/>
+        <result column="red5locate" jdbcType="VARCHAR" property="red5locate"/>
+        <result column="red6locate" jdbcType="VARCHAR" property="red6locate"/>
+        <result column="locateComp" jdbcType="VARCHAR" property="locateComp"/>
+        <result column="redComp" jdbcType="VARCHAR" property="redComp"/>
+
+
+    </resultMap>
+
+    <sql id="selectColumnList">
+        issue,red,red1,red2,red3,red4,red5,red6,blue,one1,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,
+        fifteen,sixteen,seventeen,eighteen,nineteen,twenty,twentyone,twentytwo,twentythree,twentyfour,
+        twentyfive,twentysix,twentyseven,twentyeight,twentynine,thirty,thirtyone,thirtytwo,thirtythree,
+        red1locate,red2locate,red3locate,red4locate,red5locate,red6locate,locateComp,redComp
+    </sql>
+
+    <insert id="insertSSQRealTime" parameterType="com.spider.lottery.ssqservice.SsqService">
+
+        insert into ssqrealtime (
+        <include refid="selectColumnList"/>
+        )
+    VALUES (#{issue,jdbcType=VARCHAR},#{red,jdbcType=VARCHAR},#{red1,jdbcType=VARCHAR},#{red2,jdbcType=VARCHAR},#{red3,jdbcType=VARCHAR},#{red4,jdbcType=VARCHAR}
+        ,#{red5,jdbcType=VARCHAR},#{red6,jdbcType=VARCHAR},#{blue,jdbcType=VARCHAR},#{one1,jdbcType=VARCHAR},#{two,jdbcType=VARCHAR},#{three,jdbcType=VARCHAR},#{four,jdbcType=VARCHAR}
+        ,#{five,jdbcType=VARCHAR},#{six,jdbcType=VARCHAR},#{seven,jdbcType=VARCHAR},#{eight,jdbcType=VARCHAR}
+        ,#{nine,jdbcType=VARCHAR},#{ten,jdbcType=VARCHAR},#{eleven,jdbcType=VARCHAR},#{twelve,jdbcType=VARCHAR}
+        ,#{thirteen,jdbcType=VARCHAR},#{fourteen,jdbcType=VARCHAR},#{fifteen,jdbcType=VARCHAR},#{sixteen,jdbcType=VARCHAR}
+        ,#{seventeen,jdbcType=VARCHAR},#{eighteen,jdbcType=VARCHAR},#{nineteen,jdbcType=VARCHAR},#{twenty,jdbcType=VARCHAR}
+        ,#{twentyone,jdbcType=VARCHAR},#{twentytwo,jdbcType=VARCHAR},#{twentythree,jdbcType=VARCHAR},#{twentyfour,jdbcType=VARCHAR}
+        ,#{twentyfive,jdbcType=VARCHAR},#{twentysix,jdbcType=VARCHAR},#{twentyseven,jdbcType=VARCHAR}
+        ,#{twentyeight,jdbcType=VARCHAR},#{twentynine,jdbcType=VARCHAR},#{thirty,jdbcType=VARCHAR},#{thirtyone,jdbcType=VARCHAR},#{thirtytwo,jdbcType=VARCHAR}
+        ,#{thirtythree,jdbcType=VARCHAR},#{red1locate,jdbcType=VARCHAR},#{red2locate,jdbcType=VARCHAR},#{red3locate,jdbcType=VARCHAR},#{red4locate,jdbcType=VARCHAR}
+        ,#{red5locate,jdbcType=VARCHAR},#{red6locate,jdbcType=VARCHAR},#{locateComp,jdbcType=VARCHAR},#{redComp,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="selectSSQRealTDbLast" resultMap="ssqRealTimeResultMap">
+        select issue
+        from ssqrealtime where id=(select max(id) from ssqrealtime)
+    </select>
+
+
+</mapper>

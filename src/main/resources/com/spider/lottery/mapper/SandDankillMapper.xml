@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SandDankillMapper">
+    <resultMap id="sandDankillResultMap" type="com.spider.lottery.pojo.SandDankill">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="expertname" jdbcType="VARCHAR" property="expertname"/>
+        <result column="sanDV" jdbcType="VARCHAR" property="sanDV"/>
+        <result column="shijiDV" jdbcType="VARCHAR" property="shijiDV"/>
+        <result column="sanDgc" jdbcType="INTEGER" property="sanDgc"/>
+        <result column="sanDsum" jdbcType="INTEGER" property="sanDsum"/>
+        <result column="sanDkd" jdbcType="INTEGER" property="sanDkd"/>
+        <result column="shijiDsum" jdbcType="INTEGER" property="shijiDsum"/>
+        <result column="shijiDkd" jdbcType="INTEGER" property="shijiDkd"/>
+        <result column="mtstat" jdbcType="INTEGER" property="mtstat"/>
+
+        <result column="singDan" jdbcType="VARCHAR" property="singDan"/>
+        <result column="spicerock" jdbcType="INTEGER" property="spicerock"/>
+        <result column="singDankd" jdbcType="INTEGER" property="singDankd"/>
+        <result column="singDanlasthit" jdbcType="INTEGER" property="singDanlasthit"/>
+        <result column="singDanhit" jdbcType="INTEGER" property="singDanhit"/>
+        <result column="singDanconhit" jdbcType="INTEGER" property="singDanconhit"/>
+
+        <result column="singDanEMA3" jdbcType="DOUBLE" property="singDanEMA3"/>
+        <result column="singDanEMA7" jdbcType="DOUBLE" property="singDanEMA7"/>
+        <result column="singDanDIF" jdbcType="DOUBLE" property="singDanDIF"/>
+        <result column="singDanDEA" jdbcType="DOUBLE" property="singDanDEA"/>
+        <result column="singDanMACD" jdbcType="DOUBLE" property="singDanMACD"/>
+        <result column="singDFortEMA3" jdbcType="DOUBLE" property="singDFortEMA3"/>
+        <result column="singDFortEMA7" jdbcType="DOUBLE" property="singDFortEMA7"/>
+        <result column="singDFortDIF" jdbcType="DOUBLE" property="singDFortDIF"/>
+        <result column="singDFortDEA" jdbcType="DOUBLE" property="singDFortDEA"/>
+        <result column="singDFortMACD" jdbcType="DOUBLE" property="singDFortMACD"/>
+        <result column="singDanlastMACD" jdbcType="DOUBLE" property="singDanlastMACD"/>
+        <result column="singDFortlastMACD" jdbcType="DOUBLE" property="singDFortlastMACD"/>
+        <result column="singDFortstat" jdbcType="INTEGER" property="singDFortstat"/>
+
+
+        <result column="fiveDanV" jdbcType="INTEGER" property="fiveDanV"/>
+        <result column="fiveDandiv" jdbcType="INTEGER" property="fiveDandiv"/>
+        <result column="fiveDanskewn" jdbcType="INTEGER" property="fiveDanskewn"/>
+        <result column="fiveDanacV" jdbcType="INTEGER" property="fiveDanacV"/>
+        <result column="fiveDanhit" jdbcType="INTEGER" property="fiveDanhit"/>
+        <result column="fiveDanlasthit" jdbcType="INTEGER" property="fiveDanlasthit"/>
+        <result column="fiveDanconhit" jdbcType="INTEGER" property="fiveDanconhit"/>
+        <result column="fiveDFortEMA3" jdbcType="DOUBLE" property="fiveDFortEMA3"/>
+        <result column="fiveDFortEMA7" jdbcType="DOUBLE" property="fiveDFortEMA7"/>
+        <result column="fiveDanDIF" jdbcType="DOUBLE" property="fiveDanDIF"/>
+        <result column="fiveDanDEA" jdbcType="DOUBLE" property="fiveDanDEA"/>
+        <result column="fiveDFortMACD" jdbcType="DOUBLE" property="fiveDFortMACD"/>
+        <result column="fiveDFortlastMACD" jdbcType="DOUBLE" property="fiveDFortlastMACD"/>
+        <result column="fiveDFortstat" jdbcType="INTEGER" property="fiveDFortstat"/>
+
+        <result column="sumDanV" jdbcType="INTEGER" property="sumDanV"/>
+        <result column="sumDandiv" jdbcType="INTEGER" property="sumDandiv"/>
+        <result column="sumDanskewn" jdbcType="INTEGER" property="sumDanskewn"/>
+        <result column="sumDanacV" jdbcType="INTEGER" property="sumDanacV"/>
+        <result column="sumDanhit" jdbcType="INTEGER" property="sumDanhit"/>
+        <result column="sumDanlasthit" jdbcType="INTEGER" property="sumDanlasthit"/>
+        <result column="sumDanconhit" jdbcType="INTEGER" property="sumDanconhit"/>
+        <result column="sumDFortEMA3" jdbcType="DOUBLE" property="sumDFortEMA3"/>
+        <result column="sumDFortEMA7" jdbcType="DOUBLE" property="sumDFortEMA7"/>
+        <result column="sumDanDIF" jdbcType="DOUBLE" property="sumDanDIF"/>
+        <result column="sumDanDEA" jdbcType="DOUBLE" property="sumDanDEA"/>
+        <result column="sumDFortMACD" jdbcType="DOUBLE" property="sumDFortMACD"/>
+        <result column="sumDFortlastMACD" jdbcType="DOUBLE" property="sumDFortlastMACD"/>
+        <result column="sumDFortstat" jdbcType="INTEGER" property="sumDFortstat"/>
+
+        <result column="kuaDanV" jdbcType="INTEGER" property="kuaDanV"/>
+        <result column="kuaDandiv" jdbcType="INTEGER" property="kuaDandiv"/>
+        <result column="kuaDanskewn" jdbcType="INTEGER" property="kuaDanskewn"/>
+        <result column="kuaDanacV" jdbcType="INTEGER" property="kuaDanacV"/>
+        <result column="kuaDanhit" jdbcType="INTEGER" property="kuaDanhit"/>
+        <result column="kuaDanlasthit" jdbcType="INTEGER" property="kuaDanlasthit"/>
+        <result column="kuaDanconhit" jdbcType="INTEGER" property="kuaDanconhit"/>
+        <result column="kuaDFortEMA3" jdbcType="DOUBLE" property="kuaDFortEMA3"/>
+        <result column="kuaDFortEMA7" jdbcType="DOUBLE" property="kuaDFortEMA7"/>
+        <result column="kuaDanDIF" jdbcType="DOUBLE" property="kuaDanDIF"/>
+        <result column="kuaDanDEA" jdbcType="DOUBLE" property="kuaDanDEA"/>
+        <result column="kuaDFortMACD" jdbcType="DOUBLE" property="kuaDFortMACD"/>
+        <result column="kuaDFortlastMACD" jdbcType="DOUBLE" property="kuaDFortlastMACD"/>
+        <result column="kuaDFortstat" jdbcType="INTEGER" property="kuaDFortstat"/>
+
+    </resultMap>
+
+
+    <delete id="deleteSandDankillByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sandp.sanddankill
+    where issue = #{issue,jdbcType=VARCHAR}
+   </delete>
+
+    <sql id="BaseColumnList">
+        id,issue,expertname,sanDV,shijiDV,sanDgc,sanDsum,sanDkd,shijiDsum,shijiDkd,mtstat,singDan,spicerock,singDankd,
+        singDanlasthit,singDanhit,singDanconhit,singDanEMA3,singDanEMA7,singDanDIF,singDanDEA,singDanMACD,singDFortEMA3,
+        singDFortEMA7,singDFortDIF,singDFortDEA,singDFortMACD,singDanlastMACD,singDFortlastMACD,singDFortstat,fiveDanV,
+        fiveDandiv,fiveDanskewn,fiveDanacV,fiveDanhit,fiveDanlasthit,fiveDanconhit,fiveDFortEMA3,fiveDFortEMA7,fiveDanDIF,
+        fiveDanDEA,fiveDFortMACD,fiveDFortlastMACD,fiveDFortstat,sumDanV,sumDandiv,sumDanskewn,sumDanacV,sumDanhit,
+        sumDanlasthit,sumDanconhit,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortlastMACD,sumDFortstat,
+        kuaDanV,kuaDandiv,kuaDanskewn,kuaDanacV,kuaDanhit,kuaDanlasthit,kuaDanconhit,kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,
+        kuaDanDEA,kuaDFortMACD,kuaDFortlastMACD,kuaDFortstat
+    </sql>
+
+    <insert id="insertSandDankill" parameterType="com.spider.lottery.pojo.SandDankill">
+    insert into sandp.sanddankill (
+        <include refid="BaseColumnList"/>
+      )
+    values (
+      #{id,jdbcType=INTEGER},#{issue,jdbcType=VARCHAR}, #{expertname,jdbcType=VARCHAR},#{sanDV,jdbcType=VARCHAR},
+      #{shijiDV,jdbcType=VARCHAR}, #{sanDgc,jdbcType=INTEGER},#{sanDsum,jdbcType=INTEGER}, #{sanDkd,jdbcType=INTEGER},
+      #{shijiDsum,jdbcType=INTEGER}, #{shijiDkd,jdbcType=INTEGER}, #{mtstat,jdbcType=INTEGER},#{singDan,jdbcType=VARCHAR},
+      #{spicerock,jdbcType=INTEGER}, #{singDankd,jdbcType=INTEGER}, #{singDanlasthit,jdbcType=INTEGER},#{singDanhit,jdbcType=INTEGER},
+      #{singDanconhit,jdbcType=INTEGER}, #{singDanEMA3,jdbcType=DOUBLE},#{singDanEMA7,jdbcType=DOUBLE},#{singDanDIF,jdbcType=DOUBLE},
+      #{singDanDEA,jdbcType=DOUBLE}, #{singDanMACD,jdbcType=DOUBLE}, #{singDFortEMA3,jdbcType=DOUBLE}, #{singDFortEMA7,jdbcType=DOUBLE},
+      #{singDFortDIF,jdbcType=DOUBLE}, #{singDFortDEA,jdbcType=DOUBLE}, #{singDFortMACD,jdbcType=DOUBLE}, #{singDanlastMACD,jdbcType=DOUBLE},
+      #{singDFortlastMACD,jdbcType=DOUBLE}, #{singDFortstat,jdbcType=INTEGER}, #{fiveDanV,jdbcType=VARCHAR},
+      #{fiveDandiv,jdbcType=INTEGER},#{fiveDanskewn,jdbcType=INTEGER}, #{fiveDanacV,jdbcType=INTEGER}, #{fiveDanhit,jdbcType=INTEGER},
+      #{fiveDanlasthit,jdbcType=INTEGER}, #{fiveDanconhit,jdbcType=INTEGER},#{fiveDFortEMA3,jdbcType=DOUBLE}, #{singDFortEMA7,jdbcType=DOUBLE},
+      #{fiveDanDIF,jdbcType=DOUBLE}, #{fiveDanDEA,jdbcType=DOUBLE}, #{fiveDFortMACD,jdbcType=DOUBLE},
+      #{fiveDFortlastMACD,jdbcType=DOUBLE}, #{fiveDFortstat,jdbcType=INTEGER},#{sumDanV,jdbcType=VARCHAR},#{sumDandiv,jdbcType=INTEGER},
+      #{sumDanskewn,jdbcType=INTEGER}, #{sumDanacV,jdbcType=INTEGER}, #{sumDanhit,jdbcType=INTEGER}, #{sumDanlasthit,jdbcType=INTEGER},
+      #{sumDanconhit,jdbcType=INTEGER}, #{sumDFortEMA3,jdbcType=DOUBLE}, #{sumDFortEMA7,jdbcType=DOUBLE}, #{sumDanDIF,jdbcType=DOUBLE},
+      #{sumDanDEA,jdbcType=DOUBLE}, #{sumDFortMACD,jdbcType=DOUBLE}, #{sumDFortlastMACD,jdbcType=DOUBLE}, #{sumDFortstat,jdbcType=INTEGER},
+      #{kuaDanV,jdbcType=VARCHAR}, #{kuaDandiv,jdbcType=INTEGER},#{kuaDanskewn,jdbcType=INTEGER}, #{kuaDanacV,jdbcType=INTEGER},
+      #{kuaDanhit,jdbcType=INTEGER}, #{kuaDanlasthit,jdbcType=INTEGER}, #{kuaDanconhit,jdbcType=INTEGER}, #{kuaDFortEMA3,jdbcType=DOUBLE},
+      #{kuaDFortEMA7,jdbcType=DOUBLE}, #{kuaDanDIF,jdbcType=DOUBLE}, #{kuaDanDEA,jdbcType=DOUBLE}, #{kuaDFortMACD,jdbcType=DOUBLE},
+      #{kuaDFortlastMACD,jdbcType=DOUBLE}, #{kuaDFortstat,jdbcType=INTEGER}
+      )
+    </insert>
+
+    <select id="selectSanDkillDbLast" resultMap="sandDankillResultMap">
+        select issue
+        from sandp.sanddankill where id=(select max(id) from sandp.sanddankill)
+    </select>
+
+    <select id="selectSanDkillHisMatchfirst" resultMap="sandDankillResultMap">
+        select issue
+        from sandp.sanddankill where sanDV IS NULL limit 0,100
+    </select>
+
+    <update id="updateSanDMatch" parameterType="com.spider.lottery.sanDservice.SanDHisMatchService">
+
+        update sandp.sanddankill,sandp.sandhistory
+        SET sandp.sanddankill.sanDV=sandp.sandhistory.sanDV,sandp.sanddankill.shijiDV=sandp.sandhistory.shijiDV,
+        sandp.sanddankill.sanDgc=sandp.sandhistory.sanDgc,sandp.sanddankill.sanDsum=sandp.sandhistory.sanDsum,
+        sandp.sanddankill.sanDkd=sandp.sandhistory.sanDkd,sandp.sanddankill.shijiDsum=sandp.sandhistory.shijiDsum,
+        sandp.sanddankill.shijiDkd=sandp.sandhistory.shijiDkd,sandp.sanddankill.mtstat=sandp.sandhistory.mtstat
+        WHERE sandp.sanddankill.issue = sandp.sandhistory.issue and sandp.sandhistory.issue between #{time1,jdbcType=VARCHAR} and #{time2,jdbcType=VARCHAR}
+    </update>
+
+
+<!--
+    <update id="updateHistoryByPrimaryKey" parameterType="com.spider.lottery.pojo.SanDHistory">
+    update ssqhistory
+    set date = #{date,jdbcType=VARCHAR},
+      red = #{red,jdbcType=VARCHAR},
+      red1 = #{red1,jdbcType=VARCHAR},
+      red2 = #{red2,jdbcType=VARCHAR},
+      red3 = #{red3,jdbcType=VARCHAR},
+      red4 = #{red4,jdbcType=VARCHAR},
+      red5 = #{red5,jdbcType=VARCHAR},
+      red6 = #{red6,jdbcType=VARCHAR},
+      blue = #{blue,jdbcType=VARCHAR},
+    where issue = #{issue,jdbcType=VARCHAR}
+  </update>-->
+
+</mapper>

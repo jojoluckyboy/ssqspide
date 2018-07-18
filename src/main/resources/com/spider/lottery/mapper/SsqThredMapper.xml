@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SsqThredMapper">
+    <resultMap id="ssqthredResultMap" type="com.spider.lottery.pojo.SsqThred">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="expertname" jdbcType="VARCHAR" property="expertname"/>
+        <result column="redthree" jdbcType="VARCHAR" property="redthree"/>
+        <result column="red" jdbcType="VARCHAR" property="red"/>
+        <result column="hitrecord" jdbcType="INTEGER" property="hitrecord"/>
+        <result column="hitscore" jdbcType="INTEGER" property="hitscore"/>
+        <result column="lastconterrorpd" jdbcType="INTEGER" property="lastconterrorpd"/>
+        <result column="historymaxerrorpd" jdbcType="INTEGER" property="historymaxerrorpd"/>
+        <result column="presenterrorscore" jdbcType="INTEGER" property="presenterrorscore"/>
+        <result column="performscore" jdbcType="INTEGER" property="performscore"/>
+        <result column="ponitone" jdbcType="FLOAT" property="ponitone"/>
+        <result column="ponittwo" jdbcType="FLOAT" property="ponittwo"/>
+        <result column="ponitthree" jdbcType="FLOAT" property="ponitthree"/>
+        <result column="trendprd" jdbcType="VARCHAR" property="trendprd"/>
+        <result column="red1" jdbcType="VARCHAR" property="red1"/>
+        <result column="red2" jdbcType="VARCHAR" property="red2"/>
+        <result column="red3" jdbcType="VARCHAR" property="red3"/>
+        <result column="red4" jdbcType="VARCHAR" property="red4"/>
+        <result column="red5" jdbcType="VARCHAR" property="red5"/>
+        <result column="red6" jdbcType="VARCHAR" property="red6"/>
+        <result column="blue" jdbcType="VARCHAR" property="blue"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="redfive" jdbcType="VARCHAR" property="redfive"/>
+        <result column="bluethree" jdbcType="VARCHAR" property="bluethree"/>
+        <result column="redk" jdbcType="VARCHAR" property="redk"/>
+        <result column="threeredk" jdbcType="VARCHAR" property="threeredk"/>
+        <result column="sixredk" jdbcType="VARCHAR" property="sixredk"/>
+        <result column="bluethreek" jdbcType="VARCHAR" property="bluethreek"/>
+        <result column="ponecount" jdbcType="INTEGER" property="ponecount"/>
+        <result column="ptwocount" jdbcType="INTEGER" property="ponecount"/>
+        <result column="pthreecount" jdbcType="INTEGER" property="ponecount"/>
+        <result column="distinct" jdbcType="INTEGER" property="distinct"/>
+        <result column="pone100" jdbcType="DOUBLE" property="pone100"/>
+        <result column="pone50" jdbcType="DOUBLE" property="pone50"/>
+        <result column="pone30" jdbcType="DOUBLE" property="pone30"/>
+        <result column="pone20" jdbcType="DOUBLE" property="pone20"/>
+        <result column="pone10" jdbcType="DOUBLE" property="pone10"/>
+        <result column="pone5" jdbcType="DOUBLE" property="pone5"/>
+        <result column="ptwo100" jdbcType="DOUBLE" property="ptwo100"/>
+        <result column="ptwo50" jdbcType="DOUBLE" property="ptwo50"/>
+        <result column="ptwo30" jdbcType="DOUBLE" property="ptwo30"/>
+        <result column="ptwo20" jdbcType="DOUBLE" property="ptwo20"/>
+        <result column="ptwo10" jdbcType="DOUBLE" property="ptwo10"/>
+        <result column="ptwo5" jdbcType="DOUBLE" property="ptwo5"/>
+        <result column="pthree100" jdbcType="DOUBLE" property="pthree100"/>
+        <result column="pthree50" jdbcType="DOUBLE" property="pthree50"/>
+        <result column="pthree30" jdbcType="DOUBLE" property="pthree30"/>
+        <result column="pthree20" jdbcType="DOUBLE" property="pthree20"/>
+        <result column="pthree10" jdbcType="DOUBLE" property="pthree10"/>
+        <result column="pthree5" jdbcType="DOUBLE" property="pthree5"/>
+
+        <result column="lasthit" jdbcType="INTEGER" property="lasthit"/>
+        <result column="lastscore" jdbcType="INTEGER" property="lastscore"/>
+        <result column="formax" jdbcType="INTEGER" property="formax"/>
+        <result column="oddeven" jdbcType="INTEGER" property="oddeven"/>
+        <result column="smallbig" jdbcType="INTEGER" property="smallbig"/>
+        <result column="primecom" jdbcType="INTEGER" property="primecom"/>
+        <result column="p51" jdbcType="INTEGER" property="p51"/>
+        <result column="p52" jdbcType="INTEGER" property="p52"/>
+        <result column="p53" jdbcType="INTEGER" property="p53"/>
+        <result column="p101" jdbcType="INTEGER" property="p101"/>
+        <result column="p102" jdbcType="INTEGER" property="p102"/>
+        <result column="p103" jdbcType="INTEGER" property="p103"/>
+        <result column="p201" jdbcType="INTEGER" property="p201"/>
+        <result column="p202" jdbcType="INTEGER" property="p202"/>
+        <result column="p203" jdbcType="INTEGER" property="p203"/>
+        <result column="p301" jdbcType="INTEGER" property="p301"/>
+        <result column="p302" jdbcType="INTEGER" property="p302"/>
+        <result column="p303" jdbcType="INTEGER" property="p303"/>
+        <result column="p501" jdbcType="INTEGER" property="p501"/>
+        <result column="p502" jdbcType="INTEGER" property="p502"/>
+        <result column="p503" jdbcType="INTEGER" property="p503"/>
+        <result column="p1001" jdbcType="INTEGER" property="p1001"/>
+        <result column="p1002" jdbcType="INTEGER" property="p1002"/>
+        <result column="p1003" jdbcType="INTEGER" property="p1003"/>
+        <result column="nowhit" jdbcType="INTEGER" property="nowhit"/>
+        <result column="nowscore" jdbcType="INTEGER" property="nowscore"/>
+        <result column="threesum" jdbcType="INTEGER" property="threesum"/>
+        <result column="div30" jdbcType="INTEGER" property="div30"/>
+        <result column="div31" jdbcType="INTEGER" property="div31"/>
+        <result column="div32" jdbcType="INTEGER" property="div32"/>
+        <result column="divergence" jdbcType="INTEGER" property="divergence"/>
+        <result column="skewness" jdbcType="INTEGER" property="skewness"/>
+        <result column="acV" jdbcType="INTEGER" property="acV"/>
+
+
+    </resultMap>
+    <resultMap id="hitscoremap" type="com.spider.lottery.pojo.SsqThred">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="expertname" jdbcType="VARCHAR" property="expertname"/>
+        <result column="hitrecord" jdbcType="INTEGER" property="hitrecord"/>
+        <result column="hitscore" jdbcType="INTEGER" property="hitscore"/>
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        id,issue,expertname,redthree,red,historymaxerrorpd,
+        presenterrorscore,red1,red2,red3,red4,
+        red5,red6,blue,url,redfive,bluethree,redk,threeredk,sixredk,bluethreek
+    </sql>
+    <insert id="insertSSQThred" parameterType="com.spider.lottery.pojo.SsqThred">
+        insert into ssqthred (
+        <include refid="BaseColumnList"/>
+        )
+        values (
+        #{id,jdbcType=INTEGER},#{issue,jdbcType=VARCHAR}, #{expertname,jdbcType=VARCHAR},
+        #{redthree,jdbcType=VARCHAR}, #{red,jdbcType=VARCHAR},#{historymaxerrorpd,jdbcType=INTEGER},
+        #{presenterrorscore,jdbcType=INTEGER}, #{red1,jdbcType=VARCHAR}, #{red2,jdbcType=VARCHAR},
+        #{red3,jdbcType=VARCHAR}, #{red4,jdbcType=VARCHAR}, #{red5,jdbcType=VARCHAR},
+        #{red6,jdbcType=VARCHAR}, #{blue,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR},
+        #{redfive,jdbcType=VARCHAR}, #{bluethree,jdbcType=VARCHAR}, #{redk,jdbcType=VARCHAR},
+        #{threeredk,jdbcType=VARCHAR}, #{sixredk,jdbcType=VARCHAR}, #{bluethreek,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="updateSSQThredMatch" parameterType="com.spider.lottery.ssqservice.SsqThredMatchService">
+
+    update ssqthred,ssqhistory
+    SET ssqthred.red=ssqhistory.red,ssqthred.red1=ssqhistory.red1,
+        ssqthred.red2=ssqhistory.red2,ssqthred.red3=ssqhistory.red3,
+        ssqthred.red4=ssqhistory.red4,ssqthred.red5=ssqhistory.red5,
+        ssqthred.red6=ssqhistory.red6,ssqthred.blue=ssqhistory.blue
+        WHERE ssqthred.issue = ssqhistory.issue and ssqhistory.issue between #{time1,jdbcType=VARCHAR} and #{time2,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectRedthreeById"  resultType="String" parameterType="com.spider.lottery.ssqservice.SsqCalService" >
+        select redthree from ssqthred
+        where id = #{startId,jdbcType=INTEGER}
+     </select>
+
+    <select id="selectRedsixById"  resultType="String" parameterType="com.spider.lottery.ssqservice.SsqCalService" >
+        select red from ssqthred
+        where id = #{startId,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateSSQhit" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.hitrecord=#{hitResult,jdbcType=INTEGER},ssqthred.hitscore=#{hitScore,jdbcType=INTEGER}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSSQerror" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.lastconterrorpd=#{lasterr,jdbcType=INTEGER},ssqthred.historymaxerrorpd=#{maxerr,jdbcType=INTEGER}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+
+    <sql id="selectHitList">
+        id,issue,expertname,redthree,hitrecord,hitscore,lastconterrorpd,historymaxerrorpd,
+        presenterrorscore,ponecount,ptwocount,pthreecount
+    </sql>
+
+    <select id="selectByexpert"  resultType="String" >
+        select expertname from ssqthred
+        group by expertname
+    </select>
+
+    <select id="selectGroupbyExp"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE expertname = #{expertname,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectGroupbyExpDesc"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} order by id ASC
+    </select>
+
+    <update id="updateSSQpair" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.ponitone=#{paironeP,jdbcType=FLOAT},ssqthred.ponittwo=#{pairtwoP,jdbcType=FLOAT},ssqthred.ponitthree=#{pairthreeP,jdbcType=FLOAT},ssqthred.ponecount=#{paironeC,jdbcType=INTEGER}
+            ,ssqthred.ptwocount=#{pairtwoC,jdbcType=INTEGER},ssqthred.pthreecount=#{pairthreeC,jdbcType=INTEGER}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateDisPerS" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.presenterrorscore=#{errorScore,jdbcType=INTEGER},ssqthred.performscore=#{performscore,jdbcType=INTEGER}
+        ,ssqthred.distinct=#{distinct,jdbcType=INTEGER}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectSSQThrDbLast" resultMap="ssqthredResultMap">
+        select issue
+        from ssqthred where id=(select max(id) from ssqthred)
+    </select>
+
+    <select id="selectIdByEdesc"  resultType="int" parameterType="com.spider.lottery.ssqservice.SsqCalService" >
+        select id from ssqthred
+        where historymaxerrorpd = #{hiserrprd,jdbcType=INTEGER} ORDER BY id DESC limit 1
+    </select>
+
+    <select id="selectIdByE"  resultMap="ssqthredResultMap" parameterType="com.spider.lottery.ssqservice.SsqCalService" >
+        select id from ssqthred
+        where historymaxerrorpd = #{hiserrprd,jdbcType=INTEGER} limit 1
+    </select>
+
+    <select id="selectByexpertID"  resultType="String" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        SELECT expertname FROM ssqthred WHERE id BETWEEN #{startid,jdbcType=INTEGER} AND #{endid,jdbcType=INTEGER}
+        GROUP BY expertname ORDER BY id
+    </select>
+
+    <select id="selectIDbyExpHit"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND historymaxerrorpd = #{hiserrprd,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectIDbyExpHitlast"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE id &lt; #{expid,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,1
+    </select>
+
+    <select id="selectIDbyExpANDissue"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE issue = #{issuedate,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,1
+    </select>
+
+    <select id="selectIDbyissueHitlast"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE issue &lt; #{issuedate,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,1
+    </select>
+
+    <select id="selectRcByhismaxpd"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService" >
+        select
+        <include refid="selectHitList"/>
+         from ssqthred
+        where historymaxerrorpd = #{hiserrprd,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectIdByPdesc"  resultType="int" parameterType="com.spider.lottery.ssqservice.SsqCalService" >
+        select id from ssqthred
+        where presenterrorscore = #{perrorscore,jdbcType=INTEGER} ORDER BY id DESC limit 1
+    </select>
+
+    <select id="selectIdByP"  resultMap="ssqthredResultMap" parameterType="com.spider.lottery.ssqservice.SsqCalService" >
+        select id from ssqthred
+        where presenterrorscore = #{perrorscore,jdbcType=INTEGER} limit 1
+    </select>
+
+    <select id="selectIDbyExpPes"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND presenterrorscore = #{perrorscore,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectIDbyExpPesAsc"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND presenterrorscore = #{perrorscore,jdbcType=INTEGER} ORDER BY id ASC
+    </select>
+
+    <select id="selectIDbyExplimit"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from (select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE id &lt; #{expid,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER by id desc limit 0,2) k ORDER BY id ASC
+    </select>
+
+    <select id="selectfromIDbyExp"  resultMap="hitscoremap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectHitList"/>
+        from ssqthred
+        WHERE id &gt;= #{expid,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectCountbyExplast"  resultType="int" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        count(*)
+        from ssqthred
+        WHERE id &lt;= #{expid,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateSSQpairRecent5" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.pone5=#{pone5P,jdbcType=DOUBLE},ssqthred.ptwo5=#{ptwo5P,jdbcType=DOUBLE},ssqthred.pthree5=#{pthree5P,jdbcType=DOUBLE}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSSQpairRecent10" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.pone10=#{pone10P,jdbcType=DOUBLE},ssqthred.ptwo10=#{ptwo10P,jdbcType=DOUBLE},ssqthred.pthree10=#{pthree10P,jdbcType=DOUBLE}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSSQpairRecent20" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.pone20=#{pone20P,jdbcType=DOUBLE},ssqthred.ptwo20=#{ptwo20P,jdbcType=DOUBLE},ssqthred.pthree20=#{pthree20P,jdbcType=DOUBLE}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSSQpairRecent30" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.pone30=#{pone30P,jdbcType=DOUBLE},ssqthred.ptwo30=#{ptwo30P,jdbcType=DOUBLE},ssqthred.pthree30=#{pthree30P,jdbcType=DOUBLE}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSSQpairRecent50" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.pone50=#{pone50P,jdbcType=DOUBLE},ssqthred.ptwo50=#{ptwo50P,jdbcType=DOUBLE},ssqthred.pthree50=#{pthree50P,jdbcType=DOUBLE}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateSSQpairRecent100" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.pone100=#{pone100P,jdbcType=DOUBLE},ssqthred.ptwo100=#{ptwo100P,jdbcType=DOUBLE},ssqthred.pthree100=#{pthree100P,jdbcType=DOUBLE}
+        WHERE id = #{startId,jdbcType=INTEGER}
+    </update>
+
+    <sql id="selectMLList">
+        id,issue,expertname,redthree,red,hitrecord,hitscore,lastconterrorpd,historymaxerrorpd,
+        presenterrorscore,performscore,ssqthred.distinct,pone100,pone50,pone30,pone20,pone10,
+        pone5,ptwo100,ptwo50,ptwo30,ptwo20,ptwo10,ptwo5,pthree100,pthree50,pthree30,
+        pthree20,pthree10,pthree5
+    </sql>
+
+    <select id="selectMLModelbyId"  resultMap="ssqthredResultMap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectMLList"/>
+        from ssqthred
+        where id = #{expid,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectMLbyExpPesAsc"  resultMap="ssqthredResultMap" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+        select
+        <include refid="selectMLList"/>
+        from ssqthred
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND presenterrorscore = #{perrorscore,jdbcType=INTEGER} ORDER BY id ASC
+    </select>
+
+    <update id="updateSSQMLModelbyId" parameterType="com.spider.lottery.ssqservice.SsqCalService">
+
+        update ssqthred
+        SET ssqthred.lasthit=#{lasthit,jdbcType=INTEGER},ssqthred.lastscore=#{lastscore,jdbcType=INTEGER},
+        ssqthred.formax=#{formax,jdbcType=INTEGER},ssqthred.oddeven=#{oddeven,jdbcType=INTEGER},ssqthred.smallbig=#{smallbig,jdbcType=INTEGER},
+        ssqthred.primecom=#{primecom,jdbcType=INTEGER},ssqthred.p51=#{p51,jdbcType=INTEGER},ssqthred.p52=#{p52,jdbcType=INTEGER},
+        ssqthred.p53=#{p53,jdbcType=INTEGER},ssqthred.p101=#{p101,jdbcType=INTEGER},ssqthred.p102=#{p102,jdbcType=INTEGER},
+        ssqthred.p103=#{p103,jdbcType=INTEGER},ssqthred.p201=#{p201,jdbcType=INTEGER},ssqthred.p202=#{p202,jdbcType=INTEGER},
+        ssqthred.p203=#{p203,jdbcType=INTEGER},ssqthred.p301=#{p301,jdbcType=INTEGER},ssqthred.p302=#{p302,jdbcType=INTEGER},
+        ssqthred.p303=#{p303,jdbcType=INTEGER},ssqthred.p501=#{p501,jdbcType=INTEGER},ssqthred.p502=#{p502,jdbcType=INTEGER},
+        ssqthred.p503=#{p503,jdbcType=INTEGER},ssqthred.p1001=#{p1001,jdbcType=INTEGER},ssqthred.p1002=#{p1002,jdbcType=INTEGER},
+        ssqthred.p1003=#{p1003,jdbcType=INTEGER},ssqthred.nowhit=#{nowhit,jdbcType=INTEGER},ssqthred.nowscore=#{nowscore,jdbcType=INTEGER}
+        ,ssqthred.threesum=#{threesum,jdbcType=INTEGER},ssqthred.div30=#{div30,jdbcType=INTEGER},ssqthred.div31=#{div31,jdbcType=INTEGER}
+        ,ssqthred.div32=#{div32,jdbcType=INTEGER},ssqthred.divergence=#{divergence,jdbcType=INTEGER},ssqthred.skewness=#{skewness,jdbcType=INTEGER}
+        ,ssqthred.acV=#{acV,jdbcType=INTEGER}
+        WHERE id = #{expid,jdbcType=INTEGER}
+    </update>
+
+    <!--    <select id="selectSSQById"  resultType="String" statementType="STATEMENT">
+            select $(searchStr)
+            from ssqthred
+            where $(id)
+        </select>-->
+        <!-- <select id="selectSSQHistoryAll" resultMap="ssqhistoryResultMap">
+            select ID, issue, date, red, red1, red2, red3, red4, red5,
+            red6, blue
+            from ssqhistory
+      </select>
+
+        <select id="selectSSQDbLast" resultMap="ssqhistoryResultMap">
+        select issue
+        from ssqhistory where id=(select max(id) from ssqhistory)
+        </select>-->
+
+</mapper>

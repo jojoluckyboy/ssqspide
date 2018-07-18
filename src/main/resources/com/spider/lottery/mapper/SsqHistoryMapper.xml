@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SsqHistoryMapper">
+    <resultMap id="ssqhistoryResultMap" type="com.spider.lottery.pojo.SsqHistory">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="date" jdbcType="VARCHAR" property="date"/>
+        <result column="red" jdbcType="VARCHAR" property="red"/>
+        <result column="red1" jdbcType="VARCHAR" property="red1"/>
+        <result column="red2" jdbcType="VARCHAR" property="red2"/>
+        <result column="red3" jdbcType="VARCHAR" property="red3"/>
+        <result column="red4" jdbcType="VARCHAR" property="red4"/>
+        <result column="red5" jdbcType="VARCHAR" property="red5"/>
+        <result column="red6" jdbcType="VARCHAR" property="red6"/>
+        <result column="blue" jdbcType="VARCHAR" property="blue"/>
+    </resultMap>
+
+
+    <delete id="deleteHistoryByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ssqhistory
+    where issue = #{issue,jdbcType=VARCHAR}
+   </delete>
+
+    <sql id="BaseColumnList">
+        ID,issue,date,red,red1,red2,red3,red4,red5,red6,blue
+    </sql>
+
+    <insert id="insertSSQHistory" parameterType="com.spider.lottery.pojo.SsqHistory">
+    insert into ssqhistory (
+        <include refid="BaseColumnList"/>
+      )
+    values (
+      #{id,jdbcType=INTEGER},#{issue,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR},
+      #{red,jdbcType=VARCHAR}, #{red1,jdbcType=VARCHAR}, #{red2,jdbcType=VARCHAR},
+      #{red3,jdbcType=VARCHAR}, #{red4,jdbcType=VARCHAR}, #{red5,jdbcType=VARCHAR},
+      #{red6,jdbcType=VARCHAR}, #{blue,jdbcType=VARCHAR}
+      )
+    </insert>
+
+    <update id="updateHistoryByPrimaryKey" parameterType="com.spider.lottery.pojo.SsqHistory">
+    update ssqhistory
+    set date = #{date,jdbcType=VARCHAR},
+      red = #{red,jdbcType=VARCHAR},
+      red1 = #{red1,jdbcType=VARCHAR},
+      red2 = #{red2,jdbcType=VARCHAR},
+      red3 = #{red3,jdbcType=VARCHAR},
+      red4 = #{red4,jdbcType=VARCHAR},
+      red5 = #{red5,jdbcType=VARCHAR},
+      red6 = #{red6,jdbcType=VARCHAR},
+      blue = #{blue,jdbcType=VARCHAR},
+    where issue = #{issue,jdbcType=VARCHAR}
+  </update>
+    <select id="selectSSQHistoryByPrimaryKey" parameterType="com.spider.lottery.pojo.SsqHistory" resultMap="ssqhistoryResultMap">
+    select ID, issue, date, red, red1, red2, red3, red4, red5,
+    red6, blue
+    from ssqhistory
+    where issue = #{issue,jdbcType=VARCHAR}
+  </select>
+    <select id="selectSSQHistoryAll" resultMap="ssqhistoryResultMap">
+        select ID, issue, date, red, red1, red2, red3, red4, red5,
+        red6, blue
+        from ssqhistory
+  </select>
+
+    <select id="selectSSQDbLast" resultMap="ssqhistoryResultMap">
+    select issue
+    from ssqhistory where id=(select max(id) from ssqhistory)
+    </select>
+
+    <select id="selectSSQHDbLast" parameterType="com.spider.lottery.ssqservice.SsqService" resultMap="ssqhistoryResultMap">
+        select <include refid="BaseColumnList"/>
+        from ssqhistory where issue = #{issue,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectbluebyissue"  resultMap="ssqhistoryResultMap" >
+        select blue
+        from ssqhistory
+        WHERE issue = #{issue,jdbcType=VARCHAR}
+    </select>
+
+   <!-- &lt;!&ndash; 查询jira列表group by 项目组，返回缺陷数目最多的前15，非jira生产库，非实时，测试调试用 &ndash;&gt;
+    <select id="getTotalbypro" resultMap="jiraProResultMap">
+   SELECT A.project ,B.XJ ,C.GB ,D.DQR,E.YC,F.DK,G.JJ,A.ZH FROM
+  (SELECT DISTINCT project,count(*) ZH FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') GROUP BY project ORDER BY COUNT(*) ASC LIMIT 0,10) A
+  LEFT JOIN
+  (SELECT project,COUNT(*) XJ FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '新建(New)' GROUP BY project)
+  B ON A.project = B.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) DK FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '打开' GROUP BY project)
+  F ON A.project = F.project
+  LEFT JOIN
+  (SELECT project,COUNT(*) JJ FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '拒绝(Rejected)' GROUP BY project)
+  G ON A.project = G.project
+  LEFT JOIN
+   (SELECT project,COUNT(*) YC FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '延迟修复(Postponed)' GROUP BY project)
+  E ON A.project = E.project
+    LEFT JOIN
+   (SELECT project,COUNT(*) DQR FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+  AND issueStat = '已解决待确认' GROUP BY project)
+  D ON A.project = D.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) GB FROM hxjira  WHERE  createDate &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND createDate &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')
+   AND issueStat = '关闭' GROUP BY project)
+  C ON A.project = C.project
+ </select>
+
+    &lt;!&ndash; 查询jira列表group by 项目组，返回缺陷数目最多的前10，jira生产库 &ndash;&gt;
+    <select id="getRtotalbypro" resultMap="jiraProResultMap">
+    SELECT A.project ,B.XJ ,C.DK ,D.JJ,E.YC,F.DQR,G.GB,A.ZH FROM
+  (SELECT DISTINCT ji.project pid,p.pname project,COUNT(*) ZH FROM jiraissue ji, project p WHERE ji.issuetype ='1' AND ji.project=p.ID AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') GROUP BY ji.project ORDER BY COUNT(*) DESC LIMIT 0,10) A
+  LEFT JOIN
+  (SELECT project,COUNT(*) XJ FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '10000' GROUP BY project)
+  B ON A.pid = B.project
+   LEFT JOIN
+  (SELECT project,COUNT(*) DK FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '1' GROUP BY project)
+  C ON A.pid = C.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) JJ FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '10002' GROUP BY project)
+  D ON A.pid = D.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) YC FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '10001' GROUP BY project)
+  E ON A.pid = E.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) DQR FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '5' GROUP BY project)
+  F ON A.pid = F.project
+    LEFT JOIN
+  (SELECT project,COUNT(*) GB FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.issuestatus = '6' GROUP BY project)
+  G ON A.pid = G.project
+
+  </select>
+
+    &lt;!&ndash; 查询jira列表group by 项目组，返回缺陷类型其他、低级、关键指标，jira生产库 &ndash;&gt;
+    <select id="getRDtypebypro" resultMap="jiraDtypeResultMap">
+
+    SELECT A.pname,A.ZH,B.QT,C.DJ,D.GJ ,E.XQBF,F.CF FROM
+       (SELECT p.pname,ji.project,COUNT(*) ZH FROM  jiraissue ji,project p WHERE ji.project = p.ID AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d')  AND p.pname= #{project} GROUP BY ji.project) A
+       LEFT JOIN
+       (SELECT project,COUNT(*) QT FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10263' GROUP BY ji.project)B
+        ON A.project=B.project
+       LEFT JOIN
+       (SELECT project, COUNT(*) DJ  FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY ji.project) C
+       ON A.project=C.project
+        LEFT JOIN
+       (SELECT project, COUNT(*) GJ  FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY ji.project) D
+       ON A.project=D.project
+        LEFT JOIN
+       (SELECT project, COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY ji.project) E
+       ON A.project=E.project
+       LEFT JOIN
+       (SELECT project,COUNT(*) CF  FROM  jiraissue ji WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.RESOLUTION='3' GROUP BY ji.project) F
+       ON A.project=F.project
+
+  </select>
+
+    &lt;!&ndash; 查询jira列表group by 项目组top3的开发缺陷情况，返回缺陷类型其他、低级、关键指标，jira生产库 &ndash;&gt;
+    <select id="getRDtypebytopdev" resultMap="jiraDtypeResultMap">
+
+SELECT A.dname,A.ZH,B.QT,C.DJ,D.GJ,E.XQBF,F.CF FROM
+       (SELECT ji.assignee sname ,cu.display_name dname,COUNT(*) ZH FROM jiraissue ji,project p,cwd_user cu WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND  ji.assignee = cu.user_name GROUP BY ji.assignee ORDER BY COUNT(*) DESC LIMIT 0,3) A
+       LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) QT FROM  jiraissue ji,customfieldvalue cv,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.ID = cv.issue AND cv.stringvalue = '10263' GROUP BY ji.assignee)B
+       ON A.sname=B.assignee
+        LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) DJ FROM  jiraissue ji,customfieldvalue cv,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY ji.assignee)C
+       ON A.sname=C.assignee
+        LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) GJ FROM  jiraissue ji,customfieldvalue cv,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY ji.assignee)D
+       ON A.sname=D.assignee
+        LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY ji.assignee)E
+       ON A.sname=E.assignee
+          LEFT JOIN
+       (SELECT ji.assignee,COUNT(*) CF FROM  jiraissue ji,project p WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{startTimeV},'%Y-%m-%d')
+       AND ji.created &lt; STR_TO_DATE(#{endTimeV},'%Y-%m-%d') AND ji.project = p.ID AND p.pname = #{project} AND ji.RESOLUTION='3' GROUP BY ji.assignee)F
+       ON A.sname=F.assignee
+
+    </select>
+
+    &lt;!&ndash; 查询jira列表group by 开发人员，按月返回缺陷数量、低级、关键指标，jira生产库 &ndash;&gt;
+    <select id="getRDtypebydev" resultMap="jiraDtypeResultMap">
+      SELECT A.months,A.ZH,B.DJ,C.GJ,D.XQBF,E.CF FROM
+       (SELECT DATE_FORMAT(created,'%Y%m') months,COUNT(*) ZH  FROM  jiraissue ji WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') GROUP BY months) A
+       LEFT JOIN
+     (SELECT DATE_FORMAT(ji.created,'%Y%m') months,COUNT(*) DJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY months)B
+      ON A.months=B.months
+       LEFT JOIN
+     (SELECT DATE_FORMAT(ji.created,'%Y%m') months,COUNT(*) GJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY months)C
+      ON A.months=C.months
+       LEFT JOIN
+     (SELECT DATE_FORMAT(ji.created,'%Y%m') months,COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY months)D
+      ON A.months=D.months
+       LEFT JOIN
+       (SELECT DATE_FORMAT(created,'%Y%m') months,COUNT(*) CF  FROM  jiraissue ji WHERE ji.assignee = #{devName} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.RESOLUTION='3' GROUP BY months) E
+       ON A.months=E.months
+
+
+    </select>
+
+    &lt;!&ndash; 查询jira的开发人员，按匹配返回，jira生产库 &ndash;&gt;
+    <select id="getRdevNamelist" resultMap="jiraDevnameResultMap">
+
+    SELECT cm.parent_name role,cu.user_name devName,cu.display_name disName FROM cwd_user cu,cwd_membership cm WHERE cu.user_name=cm.child_name AND cm.parent_name='汇信开发人员' AND cu.user_name LIKE CONCAT(#{typename},'%') ORDER BY cu.user_name
+
+    </select>
+
+
+    &lt;!&ndash; 按开发团队查询各项目的缺陷情况，按匹配返回，jira生产库 &ndash;&gt;
+    <select id="getRDprobydevgroup" resultMap="jiraDtypeResultMap">
+
+    SELECT B.project,A.dname,B1.pnum,C.ZH,D.QT,E.DJ,F.GJ,G.XQBF,H.CF FROM
+          (SELECT ji.assignee sname ,cu.display_name dname FROM jiraissue ji,cwd_user cu WHERE ji.issuetype = '1'
+          AND ji.created &gt; STR_TO_DATE(#{dstartTimeV}, '%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV}, '%Y-%m-%d')
+          AND ji.assignee IN (SELECT child_name FROM cwd_membership WHERE parent_name = #{devGroup})
+          AND ji.assignee = cu.user_name GROUP BY ji.assignee ORDER BY cu.display_name) A
+          LEFT JOIN
+          (SELECT  pj.ID PID,pj.pname project,COUNT(*) ZH FROM jiraissue ji,project pj
+        WHERE ji.issuetype = '1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV}, '%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV}, '%Y-%m-%d')
+          AND ji.project IN (SELECT PID FROM projectroleactor WHERE ROLETYPEPARAMETER = #{devGroup}) AND ji.project = pj.ID
+        GROUP BY ji.project ORDER BY ZH DESC LIMIT 0,3 ) B ON 1=1
+        LEFT JOIN
+         (SELECT COUNT(*) pnum FROM (SELECT  pj.ID PID,pj.pname project,COUNT(*) ZH FROM jiraissue ji,project pj
+        WHERE ji.issuetype = '1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV}, '%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV}, '%Y-%m-%d')
+          AND ji.project IN (SELECT PID FROM projectroleactor WHERE ROLETYPEPARAMETER = #{devGroup}) AND ji.project = pj.ID
+        GROUP BY ji.project ORDER BY ZH DESC LIMIT 0,4) B)B1 ON 1=1
+        LEFT JOIN
+        (SELECT ji.assignee,ji.project,COUNT(*) ZH FROM  jiraissue ji WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') GROUP BY ji.assignee,ji.project)C
+               ON B.PID=C.project AND A.sname=C.assignee
+         LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) QT FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.ID = cv.issue AND cv.stringvalue = '10263' GROUP BY ji.project,ji.assignee)D
+               ON B.PID=D.project AND A.sname=D.assignee
+          LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) DJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY ji.project,ji.assignee)E
+               ON B.PID=E.project AND A.sname=E.assignee
+            LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) GJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY ji.project,ji.assignee)F
+               ON B.PID=F.project AND A.sname=F.assignee
+             LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY ji.project,ji.assignee)G
+               ON B.PID=G.project AND A.sname=G.assignee
+             LEFT JOIN
+         (SELECT ji.assignee,ji.project,COUNT(*) CF FROM  jiraissue ji WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d')
+               AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d')  AND ji.RESOLUTION='3' GROUP BY ji.project,ji.assignee)H
+               ON B.PID=H.project AND A.sname=H.assignee
+    </select>
+
+    &lt;!&ndash; 按开发某一段时间的缺陷状态，按匹配返回，jira生产库 &ndash;&gt;
+    <select id="getRDevbyperiod" resultMap="jiraDtypeResultMap">
+      SELECT A.dname,A.ZH,B.XJ,C.GB,D.DQR,E.QT,F.DJ,G.GJ,H.XQBF,I.CF FROM
+       (SELECT cu.display_name dname,ji.assignee,COUNT(*) ZH FROM  jiraissue ji, cwd_user cu WHERE ji.assignee = cu.user_name AND cu.display_name= #{dname} AND ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') GROUP BY ji.assignee) A
+       LEFT JOIN
+     (SELECT ji.assignee,COUNT(*) XJ FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.issuestatus = '10000' GROUP BY ji.assignee) B
+      ON A.assignee = B.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) GB FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.issuestatus = '6' GROUP BY ji.assignee) C
+      ON A.assignee = C.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) DQR FROM jiraissue ji WHERE  ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.issuestatus = '5' GROUP BY ji.assignee) D
+      ON A.assignee = D.assignee
+      LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) QT FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10263' GROUP BY ji.assignee)E
+       ON A.assignee = E.assignee
+        LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) DJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10245' GROUP BY ji.assignee)F
+       ON A.assignee = F.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) GJ FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10320' GROUP BY ji.assignee)G
+       ON A.assignee = G.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) XQBF FROM  jiraissue ji,customfieldvalue cv WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.ID = cv.issue AND cv.stringvalue = '10246' GROUP BY ji.assignee)H
+       ON A.assignee = H.assignee
+       LEFT JOIN
+      (SELECT ji.assignee,COUNT(*) CF FROM jiraissue ji WHERE ji.issuetype ='1' AND ji.created &gt; STR_TO_DATE(#{dstartTimeV},'%Y-%m-%d') AND ji.created &lt; STR_TO_DATE(#{dendTimeV},'%Y-%m-%d') AND ji.RESOLUTION='3' GROUP BY ji.assignee)I
+       ON A.assignee = I.assignee
+    </select>-->
+
+
+</mapper>
