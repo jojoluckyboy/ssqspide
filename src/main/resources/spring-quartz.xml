@@ -111,7 +111,7 @@
         </property>
         <property name="repeatInterval"><value>0</value></property>
         <property name="repeatCount"><value>0</value></property>
-        <property name="startDelay"><value>3000</value></property>
+        <property name="startDelay"><value>300000</value></property>
     </bean>
     <!-- quartz的调度工厂 调度工厂只能有一个，多个调度任务在list中添加 -->
 

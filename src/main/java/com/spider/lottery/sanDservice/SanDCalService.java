@@ -30,14 +30,14 @@ public class SanDCalService {
      * @return 1
      * @throws Exception
      */
-    public int selectIdByDVasc(@Param("singDanhit") int singDanhit) {
+    public int selectIdByDVasc(@Param("singDanlasthit") int singDanlasthit) {
 
-        return sandDanCalMapper.selectIdByDVasc(singDanhit);
+        return sandDanCalMapper.selectIdByDVasc(singDanlasthit);
     }
 
-    public int selectIdByDVdesc(@Param("singDanhit") int singDanhit) {
+    public int selectIdByDVdesc(@Param("singDanlasthit") int singDanlasthit) {
 
-        return sandDanCalMapper.selectIdByDVdesc(singDanhit);
+        return sandDanCalMapper.selectIdByDVdesc(singDanlasthit);
 
     }
 
@@ -60,10 +60,10 @@ public class SanDCalService {
 
     }
 
-    public List<SandDankill> selectIDbyExpHit(@Param("expertname") String expertname, @Param("singDanconhit") int singDanconhit,
+    public List<SandDankill> selectIDbyExpHit(@Param("expertname") String expertname, @Param("singDanlasthit") int singDanlasthit,
                                               @Param("endid") int endid) {
 
-        return sandDanCalMapper.selectIDbyExpHit(expertname, singDanconhit, endid);
+        return sandDanCalMapper.selectIDbyExpHit(expertname, singDanlasthit, endid);
 
     }
 
@@ -104,6 +104,17 @@ public class SanDCalService {
     public int selectIdByRockdesc(@Param("spicerock") int spicerock) {
 
         return sandDanCalMapper.selectIdByRockdesc(spicerock);
+
+    }
+
+    public int selectIdBySkewnasc(@Param("fiveDanskewn") int fiveDanskewn) {
+
+        return sandDanCalMapper.selectIdBySkewnasc(fiveDanskewn);
+    }
+
+    public int selectIdBySkewndesc(@Param("fiveDanskewn") int fiveDanskewn) {
+
+        return sandDanCalMapper.selectIdBySkewndesc(fiveDanskewn);
 
     }
 
@@ -216,6 +227,12 @@ public class SanDCalService {
                 fiveDFortEMA3,fiveDFortEMA7,fiveDanDIF,fiveDanDEA,fiveDFortMACD,
                 fiveDFortstat,fiveDFortlastMACD,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortstat,sumDFortlastMACD,
                 kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,kuaDanDEA,kuaDFortMACD,kuaDFortstat,kuaDFortlastMACD,id);
+
+    }
+
+    public List<SandDankill> selectxinbyExpIssue(@Param("issue") String issue, @Param("expertname") String expertname) {
+
+        return sandDanCalMapper.selectxinbyExpIssue(issue, expertname);
 
     }
 }

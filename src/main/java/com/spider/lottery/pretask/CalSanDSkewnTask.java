@@ -442,7 +442,8 @@ public class CalSanDSkewnTask {
                 2015001,2014357
                 2016001,2015358
                 2017001,2016359
-                2018001,2017358*/
+                2018001,2017358
+                2019001,2018358*/
 
             boolean bool1 = false;
             boolean bool2 = false;
@@ -451,6 +452,7 @@ public class CalSanDSkewnTask {
             boolean bool5 = false;
             boolean bool6 = false;
             boolean bool7 = false;
+            boolean bool8 = false;
 
 
             if (findLastid.size() == 0) {
@@ -477,11 +479,12 @@ public class CalSanDSkewnTask {
                     bool4 = fissue.equals("2016001") && lissue.equals("2015358");
                     bool5 = fissue.equals("2017001") && lissue.equals("2016359");
                     bool6 = fissue.equals("2018001") && lissue.equals("2017358");
+                    bool8 = fissue.equals("2019001") && lissue.equals("2018358");
                     bool7 = lissue.equals(String.valueOf(Integer.parseInt(fissue) - 1));
 
                     List<SandDankill> newfind = sanDCalService.selectIDbyUpdateACV(fid, expertname);
 
-                    if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7) {
+                    if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7 || bool8) {
 
                         String SingDan = newfind.get(0).getSingDan();
 
@@ -552,11 +555,12 @@ public class CalSanDSkewnTask {
                     bool4 = fissue.equals("2016001") && lissue.equals("2015358");
                     bool5 = fissue.equals("2017001") && lissue.equals("2016359");
                     bool6 = fissue.equals("2018001") && lissue.equals("2017358");
+                    bool8 = fissue.equals("2019001") && lissue.equals("2018358");
                     bool7 = lissue.equals(String.valueOf(Integer.parseInt(fissue) - 1));
 
                     List<SandDankill> newfind = sanDCalService.selectIDbyUpdateACV(fid, expertname);
 
-                    if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7) {
+                    if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7 || bool8) {
 
                         SingDan = newfind.get(0).getSingDan();
 
@@ -618,8 +622,30 @@ public class CalSanDSkewnTask {
         int fid = 0;
         String fissue;
         String lissue;
-        int startid = sanDCalService.selectIdByRockasc(888);
-        int endid = sanDCalService.selectIdByRockdesc(888);
+        int startidtmp1 = sanDCalService.selectIdByRockasc(888);
+        int endidtmp1 = sanDCalService.selectIdByRockdesc(888);
+        //新版新加,旧版没有  int startid = sanDCalService.selectIdByRockasc(888);
+        int startidtmp2 = sanDCalService.selectIdBySkewnasc(888);
+        int endidtmp2 = sanDCalService.selectIdBySkewndesc(888);
+        int startid;
+        int endid;
+
+        if(startidtmp1<= startidtmp2){
+            startid = startidtmp1;
+
+        }else{
+
+            startid = startidtmp2;
+        }
+
+
+        if(endidtmp1<= endidtmp2){
+            endid = endidtmp1;
+
+        }else{
+
+            endid = endidtmp2;
+        }
 
         SandDankill sandDankill = new SandDankill();
 
@@ -648,11 +674,20 @@ public class CalSanDSkewnTask {
 
                 String[] orired = fiveDanV.split(" ");
                 String[] record = new String[3];
-                record[0] = sanDV.substring(0, 1);
-                record[1] = sanDV.substring(1, 2);
-                record[2] = sanDV.substring(2, 3);
                 fiveDandiv = divergence(orired);
-                skewnessfiveDan = skewnessfiveDan(orired, record);
+                if(sanDV==null){//新版新加判断sanDV==null,旧版没有
+
+                    skewnessfiveDan=888;
+
+                }else{
+                    record[0] = sanDV.substring(0, 1);
+                    record[1] = sanDV.substring(1, 2);
+                    record[2] = sanDV.substring(2, 3);
+
+                    skewnessfiveDan = skewnessfiveDan(orired, record);
+
+                }
+
                 fiveDanacV = acV(orired);
             }
 
@@ -670,7 +705,15 @@ public class CalSanDSkewnTask {
                 String[] oriredsum = sumDanV.split(" ");
 
                 sumDandiv = divergence(oriredsum);
-                sumDanskewn = skewness(oriredsum, sanDsum);
+                if(sanDV==null){//新版新加判断sanDV==null,旧版没有
+
+                    sumDanskewn=888;
+
+                }else{
+                    sumDanskewn = skewness(oriredsum, sanDsum);
+                }
+
+
                 sumDanacV = acV(oriredsum);
             }
 
@@ -687,7 +730,15 @@ public class CalSanDSkewnTask {
                 String[] oriredsum = kuaDanV.split(" ");
 
                 kuaDandiv = divergence(oriredsum);
-                kuaDanskewn = skewness(oriredsum, sanDsum);
+                if(sanDV==null){//新版新加判断sanDV==null,旧版没有
+
+                    kuaDanskewn=888;
+
+                }else{
+                    kuaDanskewn = skewness(oriredsum, sanDkd);
+                }
+
+
                 kuaDanacV = acV(oriredsum);
             }
 
@@ -695,8 +746,15 @@ public class CalSanDSkewnTask {
 
             int Result = sanDCalService.updateSanDACV(fiveDandiv, skewnessfiveDan, fiveDanacV, sumDandiv, sumDanskewn,
                     sumDanacV, kuaDandiv, kuaDanskewn, kuaDanacV, id);
+
             if (Result == 1) {
                 rcount11 = rcount11 + 1;
+            }
+
+            if(rcount11%1000==0){
+
+                System.out.println("休息下");
+
             }
         }
         System.out.println("共计" + rcount11 + "条跨度数据更新");
@@ -726,7 +784,9 @@ public class CalSanDSkewnTask {
                 2015001,2014357
                 2016001,2015358
                 2017001,2016359
-                2018001,2017358*/
+                2018001,2017358
+                2019001,2018358
+                */
 
             boolean bool1 = false;
             boolean bool2 = false;
@@ -735,7 +795,7 @@ public class CalSanDSkewnTask {
             boolean bool5 = false;
             boolean bool6 = false;
             boolean bool7 = false;
-
+            boolean bool8 = false;
 
             if (findLastid.size() == 0) {
 
@@ -761,11 +821,12 @@ public class CalSanDSkewnTask {
                     bool4 = fissue.equals("2016001") && lissue.equals("2015358");
                     bool5 = fissue.equals("2017001") && lissue.equals("2016359");
                     bool6 = fissue.equals("2018001") && lissue.equals("2017358");
+                    bool8 = fissue.equals("2019001") && lissue.equals("2018358");
                     bool7 = lissue.equals(String.valueOf(Integer.parseInt(fissue) - 1));
 
                     List<SandDankill> newfind = sanDCalService.selectIDbyUpdateACV(fid, expertname);
 
-                    if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7) {
+                    if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7 || bool8) {
 
                         String SingDan = newfind.get(0).getSingDan();
 
@@ -799,7 +860,14 @@ public class CalSanDSkewnTask {
                         rcount1 = rcount1 + 1;
                     }
 
+                    if(rcount1%1000==0){
+
+                        System.out.println("休息下");
+
+                    }
                 }
+
+
             }else{
 
                 int lid = findLastid.get(0).getId();
@@ -836,11 +904,12 @@ public class CalSanDSkewnTask {
                     bool4 = fissue.equals("2016001") && lissue.equals("2015358");
                     bool5 = fissue.equals("2017001") && lissue.equals("2016359");
                     bool6 = fissue.equals("2018001") && lissue.equals("2017358");
+                    bool8 = fissue.equals("2019001") && lissue.equals("2018358");
                     bool7 = lissue.equals(String.valueOf(Integer.parseInt(fissue) - 1));
 
                     List<SandDankill> newfind = sanDCalService.selectIDbyUpdateACV(fid, expertname);
 
-                    if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7) {
+                    if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7 || bool8) {
 
                         SingDan = newfind.get(0).getSingDan();
 

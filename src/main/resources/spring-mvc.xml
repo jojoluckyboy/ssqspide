@@ -18,6 +18,7 @@
     <context:component-scan base-package="com.spider.lottery">
         <context:include-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />
+      <!--  <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
     </context:component-scan>
 
     <!--开启注解-->
@@ -38,6 +39,5 @@
 
     <!--定义非Controller类调用service方法-->
    <!-- <bean id="SpringContextUtil" class="com.spider.lottery.Utils.SpringContextUtil" scope="singleton"></bean>-->
-    <bean id="SpiderHistory" class="com.spider.lottery.ssq.SpiderHistory"></bean>
-    <bean id="SsqPreTask" class="com.spider.lottery.precodition.task.SsqPreTask"></bean>
+
 </beans>

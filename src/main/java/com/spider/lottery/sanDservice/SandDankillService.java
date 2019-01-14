@@ -2,6 +2,7 @@ package com.spider.lottery.sanDservice;
 
 import com.spider.lottery.mapper.SandDankillMapper;
 import com.spider.lottery.pojo.SandDankill;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +48,19 @@ public class SandDankillService {
     public List<SandDankill> selectSanDkillDbLast() {
 
         return sandDankillMapper.selectSanDkillDbLast();
+
+
+    }
+
+    /**
+     * 返回3D历史数据当前数据库中最后一行数据
+     *
+     * @return 当前数据库中最近一次的期数
+     * @throws Exception
+     */
+    public List<SandDankill> selectResbyExpIssue(@Param("issue") String issue, @Param("expertname") String expertname) {
+
+        return sandDankillMapper.selectResbyExpIssue(issue, expertname);
 
 
     }

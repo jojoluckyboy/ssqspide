@@ -2,6 +2,7 @@ package com.spider.lottery.sanDservice;
 
 import com.spider.lottery.mapper.SanDHistoryMapper;
 import com.spider.lottery.pojo.SanDHistory;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,6 +59,28 @@ public class SandService {
     }
 
 
+    public List<SanDHistory> selectSanDhisByIssue(@Param("issue") String issue) {
+
+        return sanDHistoryMapper.selectSanDhisByIssue(issue);
+
+
+    }
+
+    public List<SanDHistory> selectSanDhisById(@Param("id") int id) {
+
+        return sanDHistoryMapper.selectSanDhisById(id);
+
+
+    }
+
+
+    public int updateSanDById(@Param("duplicateDan") int duplicateDan,@Param("oposeDan") int oposeDan,
+                       @Param("compDan") int compDan,@Param("secutiveDan") int secutiveDan,
+                       @Param("nextPlusDan") int nextPlusDan,@Param("id") int id){
+
+        return sanDHistoryMapper.updateSanDById(duplicateDan,oposeDan,compDan,secutiveDan,nextPlusDan,id);
+
+    }
 
 
 

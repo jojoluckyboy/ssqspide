@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface SandDanCalMapper {
 
-    int selectIdByDVasc(@Param("singDanhit") int singDanhit);
+    int selectIdByDVasc(@Param("singDanlasthit") int singDanlasthit);
 
-    int selectIdByDVdesc(@Param("singDanhit") int singDanhit);
+    int selectIdByDVdesc(@Param("singDanlasthit") int singDanlasthit);
 
     List<SandDankill> selectByID(int id);
 
@@ -17,7 +17,7 @@ public interface SandDanCalMapper {
                       @Param("sumDanhit") int sumDanhit, @Param("kuaDanhit") int kuaDanhit, @Param("id") int id);
     List<String> selectexpertByID(@Param("startid") int startid, @Param("endid") int endid);
 
-    List<SandDankill> selectIDbyExpHit(@Param("expertname") String expertname, @Param("singDanconhit") int singDanconhit,
+    List<SandDankill> selectIDbyExpHit(@Param("expertname") String expertname, @Param("singDanlasthit") int singDanlasthit,
                                        @Param("endid") int endid);
 
     List<SandDankill> selectIDbyExpHitlast( @Param("expid") int expid, @Param("expertname") String expertname);
@@ -34,6 +34,10 @@ public interface SandDanCalMapper {
     int selectIdByRockasc(@Param("spicerock") int spicerock);
 
     int selectIdByRockdesc(@Param("spicerock") int spicerock);
+
+    int selectIdBySkewnasc(@Param("fiveDanskewn") int fiveDanskewn);
+
+    int selectIdBySkewndesc(@Param("fiveDanskewn") int fiveDanskewn);
 
     int selectIdBySinDEMA3asc(@Param("singDanEMA3") Double singDanEMA3);
 
@@ -79,5 +83,7 @@ public interface SandDanCalMapper {
                       @Param("kuaDanDIF") double kuaDanDIF,@Param("kuaDanDEA") double kuaDanDEA,@Param("kuaDFortMACD") double kuaDFortMACD,
                       @Param("kuaDFortstat") int kuaDFortstat,@Param("kuaDFortlastMACD") double kuaDFortlastMACD,
                       @Param("id") int id);
+
+    List<SandDankill> selectxinbyExpIssue( @Param("issue") String issue, @Param("expertname") String expertname);
 
 }

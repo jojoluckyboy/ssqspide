@@ -147,7 +147,11 @@
         WHERE sandp.sanddankill.issue = sandp.sandhistory.issue and sandp.sandhistory.issue between #{time1,jdbcType=VARCHAR} and #{time2,jdbcType=VARCHAR}
     </update>
 
-
+    <select id="selectResbyExpIssue"  resultMap="sandDankillResultMap" >
+        select *
+        from sandp.sanddankill
+        WHERE issue = #{issue,jdbcType=VARCHAR} AND expertname = #{expertname,jdbcType=VARCHAR}
+    </select>
 <!--
     <update id="updateHistoryByPrimaryKey" parameterType="com.spider.lottery.pojo.SanDHistory">
     update ssqhistory

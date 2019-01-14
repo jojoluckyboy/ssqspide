@@ -43,6 +43,8 @@ public class SpiderIncremExpertSanD implements PageProcessor {
 
     public int d;
 
+    public int qishuTr;
+
     public int getDcount(){
         return this.d;
 
@@ -77,7 +79,8 @@ public class SpiderIncremExpertSanD implements PageProcessor {
             String oriJson = page.getHtml().regex("<body>(.*?)</body>").get();
             JSONObject jsonAry = JSONObject.parseObject(oriJson);
             String gsonStr = jsonAry.toString().replace("<b>", "").replace("</b>", "").replace("<br/>", "")
-                    .replace("<b class='blue'>", "").replace("\\s", " ").replace("\n", " ");
+                    .replace("<b class='blue'>", "").replace("\\s", " ").replace("\n", " ").replace("<br />", " ")
+                    .replace("，", " ");
 
             Gson gson = new Gson();
             SanDJsonOriBean sanDJsonOriBean = gson.fromJson(gsonStr, SanDJsonOriBean.class);
@@ -102,7 +105,13 @@ public class SpiderIncremExpertSanD implements PageProcessor {
                 //定4和
                 String sumDan = jsonlist.get(j).getRet().getS12().toString();
 
+                List<SandDankill> newfind = sandDankillService.selectResbyExpIssue(qishuversion, expertName);
 
+                if(Integer.parseInt(qishuversion) == qishuTr && newfind.size()>0){
+
+                    continue;
+
+                }
                 sandDankill.setIssue(qishuversion);
                 sandDankill.setExpertname(expertName);
                 sandDankill.setSingDan(singDan);
@@ -198,7 +207,7 @@ public class SpiderIncremExpertSanD implements PageProcessor {
 
 
        List<SandDankill> lastThrQishu = sandDankillService.selectSanDkillDbLast();
-        int qishuTr = Integer.valueOf(lastThrQishu.get(0).getIssue());
+        qishuTr = Integer.valueOf(lastThrQishu.get(0).getIssue());
 
 
         List<SanDHistory> lastQishu = sandService.selectSanDbLast();
@@ -207,7 +216,8 @@ public class SpiderIncremExpertSanD implements PageProcessor {
 
         loop1:
         // for (int qishu = qishuTr+1; qishu < qishuH+1; qishu++) {
-        if(qishuTr==qishuH){
+        //需要把本期历史还没更新的专家数据也更新至sanDkill
+       /* if(qishuTr==qishuH){
             try {
 
                 spiderSandInitPage.pushPage("http://expert.78500.cn/new/3d/" + qishuTr);
@@ -254,8 +264,11 @@ public class SpiderIncremExpertSanD implements PageProcessor {
 
             }
 
-        }
-        for (int qishu = qishuTr+1; qishu < qishuH+1; qishu++) {
+
+        }*/
+        for (int qishu = qishuTr; qishu < qishuH+2; qishu++)//新版qishu = qishuTr; qishu < qishuH+2 旧版int qishu = qishuTr+1; qishu < qishuH+1; qishu++
+
+        {
 
 
             try {

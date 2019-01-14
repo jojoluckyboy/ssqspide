@@ -17,6 +17,7 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -75,7 +76,7 @@ public class SanDExpertGroupTask implements PageProcessor {
     @Override
     public void process(Page page) {
 
-        String issue = "2017300";
+        String issue = "2018341";
         SandDExpertGroup sandDExpertGroup = new SandDExpertGroup();
 
         site.getCharset();
@@ -109,7 +110,7 @@ public class SanDExpertGroupTask implements PageProcessor {
 
 
 
-                int sumN=0, sumTN=0;
+       /*         int sumN=0, sumTN=0;
 
                 try {
 
@@ -119,12 +120,30 @@ public class SanDExpertGroupTask implements PageProcessor {
                     sumN = 0;
                     sumTN = 0;
                     e.printStackTrace();
-                }
+                }*/
+
+                List<String> ename = Arrays.asList("龙山一怪", "黑白猜", "鲁宾汉", "高斯", "马上定胆", "飞扬哥", "风花雪月",
+                        "领衔玩彩", "领衔彩军", "露西娅", "雄霸天下", "隐鳞藏彩", "隐胆藏彩", "闪拳", "金银铁胆", "金胆出炉",
+                        "酒纯的香", "逐鹿中原", "连连碰", "连环定胆", "运河散人", "迎彩运", "购彩小子", "贝贝托", "豹变南山",
+                        "谋码高手", "言必有中", "衡山说彩", "虹桥客", "蓝球之家", "英明胆王", "胜多负少", "胆码神算", "胆中生",
+                        "老杨说彩", "美女说号", "组号高手", "红尘", "精益求胆", "章文红", "稳操胜券", "程程", "程咬金", "神马胆",
+                        "神手破解", "神之子", "知瞳研彩", "真有戏", "看胆杀蓝", "看胆中金", "看就准", "相濡以沫", "直拿下",
+                        "百城之富", "百万雄击", "白发百中", "疯狂彩迷", "玩彩顽童", "玩彩大师", "王赢家", "独胆天涯", "独树一帜",
+                        "爵士", "爱金豆子", "焦点", "潇雨", "温柔看胆", "混世魔王", "测胆王", "没输过钱", "水煮鱼", "水上黄昏",
+                        "每天一彩", "此码必出", "林兴洛", "李逵", "杀蓝之家", "杀红助手", "杀破狼", "杀号出众", "末世", "朋哥爱彩",
+                        "暮浅", "星曜", "易经彩", "旺财宝贝", "旷世熊", "数字控", "捉星神手", "指路人", "技术彩民", "打豆豆",
+                        "才子佳人", "彩迷星探", "彩色蜡笔", "彩色系", "彩票果果", "彩神人", "彩研师", "彩界老大", "彩王布阵",
+                        "彩之骄子", "当场出彩", "开心买彩", "布衣说号", "小鬼看胆", "实验山地", "定胆老手", "定胆招财",
+                        "定胆专家", "安然", "安德", "安庆彩哥", "守望", "存胆库", "子牙神算", "妹子说彩", "天蝎王", "天职",
+                        "天涯彩", "天才彩女", "天天向下", "大骆驼", "夜眼雄鹰", "围号狙手", "唯我独彩", "唐儿", "和值高手",
+                        "后区密码", "名扬天下", "只若初见", "只争朝夕", "古蓝天者", "双眼龙", "又中一码", "博通", "南方神彩",
+                        "南宫傲", "半醉人间", "半仙", "十拿九稳", "北海", "剑胆柔情", "刘邦测号", "刘棋", "凌波仙子", "冒险",
+                        "八卦测码", "全力夺金", "克敌制胜", "元始天尊", "偷闲看彩", "信码由缰", "人定胜天", "亡灵天涯",
+                        "乱世佳人", "乡巴老", "乐透达人", "中奖秘笈", "中奖有我", "中奖之路", "中号在身", "东方花琦", "专长杀号",
+                        "专研独胆", "不老松", "三石", "一纸乱言", "一如既往", "一代彩神", "一人留", "FC达人");
 
 
-
-
-                if(sumN>1000 && sumTN>220) {
+                if(ename.contains(expertName)) {
 
                     //独胆
                     String singDan = jsonlist.get(j).getRet().getR2().toString();
@@ -181,7 +200,7 @@ public class SanDExpertGroupTask implements PageProcessor {
             SpiderSandInitPage spiderSandInitPage = (SpiderSandInitPage) context.getBean("SpiderSandInitPage");
 
 
-            int qishu = 2018172;
+            int qishu = 2019009;
 
                 if(sandDExpertGroupService.deleteSandDExpertGroup() ==0){
 

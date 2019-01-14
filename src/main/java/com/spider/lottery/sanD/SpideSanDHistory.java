@@ -528,6 +528,7 @@ public class SpideSanDHistory implements PageProcessor {
             "970","972","974","976","978","980","981","982","984","985","986","987"};
 
 
+
     @Override
     public void process(Page page) {
 
@@ -988,10 +989,314 @@ public class SpideSanDHistory implements PageProcessor {
 
     }
 
+    //  数组去重函数
+    public String[] removeDupliArray(String[] array)throws Exception {
+        Set<String> set = new HashSet<>();
+        for(int i=0;i<array.length;i++){
+            set.add(array[i]);
+        }
+        String[] removeDupliArray = (String[]) set.toArray(new String[set.size()]);
+        return removeDupliArray;
+    }
+
+
+//  判断重码函数
+    public int duplicateElem(String[] oriredNow,String[] oriredLast )throws Exception {
+
+        HashSet<String> set = new HashSet<>(Arrays.asList(oriredNow));
+        set.retainAll(Arrays.asList(oriredLast));
+        return set.size();
+
+    }
+
+    //  判断对码函数
+    public int oposeElem(String[] oriredNow,String[] oriredLast )throws Exception {
+        String[] oriredLastNew = new String[3];
+
+        for(i=0; i<oriredLast.length; i++) {
+            if (Integer.valueOf(oriredLast[i])==0){
+
+                oriredLastNew[i]="5";
+            }
+            if (Integer.valueOf(oriredLast[i])==1){
+
+                oriredLastNew[i]="6";
+            }
+            if (Integer.valueOf(oriredLast[i])==2){
+
+                oriredLastNew[i]="7";
+            }
+            if (Integer.valueOf(oriredLast[i])==3){
+
+                oriredLastNew[i]="8";
+            }
+            if (Integer.valueOf(oriredLast[i])==4){
+
+                oriredLastNew[i]="9";
+            }
+
+            if (Integer.valueOf(oriredLast[i])==5){
+
+                oriredLastNew[i]="0";
+            }
+            if (Integer.valueOf(oriredLast[i])==6){
+
+                oriredLastNew[i]="1";
+            }
+            if (Integer.valueOf(oriredLast[i])==7){
+
+                oriredLastNew[i]="2";
+            }
+            if (Integer.valueOf(oriredLast[i])==8){
+
+                oriredLastNew[i]="3";
+            }
+            if (Integer.valueOf(oriredLast[i])==9){
+
+                oriredLastNew[i]="4";
+            }
+
+
+        }
+
+        HashSet<String> set = new HashSet<>(Arrays.asList(oriredNow));
+        set.retainAll(Arrays.asList(removeDupliArray(oriredLastNew)));
+        return set.size();
+
+    }
+/*    对码
+        0   5
+        1   6
+        2   7
+        3   8
+        4   9
+
+    补数
+
+        1    9
+        2    8
+        3    7
+        4    6
+        0    5
+
+
+    邻码
+
+        0    9 、1
+        1    0、2
+        2    1、  3
+        3    2、 4
+        4    3、 5
+        5    4、 6
+        6     5 、 7
+        7     6、  8
+        8     7、  9
+        9     8、  0
+
+    隔码
+
+        0    8、2
+        1    9、 3
+        2    0、 4
+        3    1、5
+        4    2、  6
+        5    3、  7
+        6    4    8
+        7    5    9
+        8    6    0
+        9    7    2*/
+    //  判断补码函数
+    public int compElem(String[] oriredNow,String[] oriredLast )throws Exception {
+        String[] oriredLastNew = new String[3];
+
+        for(i=0; i<oriredLast.length; i++) {
+            if (Integer.valueOf(oriredLast[i])==0){
+
+                oriredLastNew[i]="5";
+            }
+            if (Integer.valueOf(oriredLast[i])==1){
+
+                oriredLastNew[i]="9";
+            }
+            if (Integer.valueOf(oriredLast[i])==2){
+
+                oriredLastNew[i]="8";
+            }
+            if (Integer.valueOf(oriredLast[i])==3){
+
+                oriredLastNew[i]="7";
+            }
+            if (Integer.valueOf(oriredLast[i])==4){
+
+                oriredLastNew[i]="6";
+            }
+
+            if (Integer.valueOf(oriredLast[i])==5){
+
+                oriredLastNew[i]="0";
+            }
+            if (Integer.valueOf(oriredLast[i])==9){
+
+                oriredLastNew[i]="1";
+            }
+            if (Integer.valueOf(oriredLast[i])==8){
+
+                oriredLastNew[i]="2";
+            }
+            if (Integer.valueOf(oriredLast[i])==7){
+
+                oriredLastNew[i]="3";
+            }
+            if (Integer.valueOf(oriredLast[i])==6){
+
+                oriredLastNew[i]="4";
+            }
+
+
+        }
+
+        HashSet<String> set = new HashSet<>(Arrays.asList(oriredNow));
+        set.retainAll(Arrays.asList(removeDupliArray(oriredLastNew)));
+        return set.size();
+
+    }
+
+    //  判断邻码函数
+    public int secutiveElem(String[] oriredNow,String[] oriredLast )throws Exception {
+        String[] oriredLastNew = new String[6];
+        int j;
+        for(i=0; i<oriredLast.length; i++) {
+            j=i;
+
+            if (Integer.valueOf(oriredLast[i])==0){
+
+                oriredLastNew[j]="9";
+                oriredLastNew[j+3]="1";
+            }
+            if (Integer.valueOf(oriredLast[i])==1){
+
+                oriredLastNew[j]="0";
+                oriredLastNew[j+3]="2";
+            }
+            if (Integer.valueOf(oriredLast[i])==2){
+
+                oriredLastNew[j]="1";
+                oriredLastNew[j+3]="3";
+            }
+            if (Integer.valueOf(oriredLast[i])==3){
+
+                oriredLastNew[j]="2";
+                oriredLastNew[j+3]="4";
+            }
+            if (Integer.valueOf(oriredLast[i])==4){
+
+                oriredLastNew[j]="3";
+                oriredLastNew[j+3]="5";
+            }
+
+            if (Integer.valueOf(oriredLast[i])==5){
+
+                oriredLastNew[j]="4";
+                oriredLastNew[j+3]="6";
+            }
+            if (Integer.valueOf(oriredLast[i])==6){
+
+                oriredLastNew[j]="5";
+                oriredLastNew[j+3]="7";
+            }
+            if (Integer.valueOf(oriredLast[i])==7){
+
+                oriredLastNew[j]="6";
+                oriredLastNew[j+3]="8";
+            }
+            if (Integer.valueOf(oriredLast[i])==8){
+
+                oriredLastNew[j]="7";
+                oriredLastNew[j+3]="9";
+            }
+            if (Integer.valueOf(oriredLast[i])==9){
+
+                oriredLastNew[j]="8";
+                oriredLastNew[j+3]="0";
+            }
 
 
 
+        }
 
+        HashSet<String> set = new HashSet<>(Arrays.asList(oriredNow));
+        set.retainAll(Arrays.asList(removeDupliArray(oriredLastNew)));
+        return set.size();
+
+    }
+
+    //  判断隔码函数
+    public int nextPlusElem(String[] oriredNow,String[] oriredLast )throws Exception {
+        String[] oriredLastNew = new String[6];
+        int j;
+        for(i=0; i<oriredLast.length; i++) {
+            j=i;
+            if (Integer.valueOf(oriredLast[i])==0){
+
+                oriredLastNew[j]="8";
+                oriredLastNew[j+3]="2";
+            }
+            if (Integer.valueOf(oriredLast[i])==1){
+
+                oriredLastNew[j]="9";
+                oriredLastNew[j+3]="3";
+            }
+            if (Integer.valueOf(oriredLast[i])==2){
+
+                oriredLastNew[j]="0";
+                oriredLastNew[j+3]="4";
+            }
+            if (Integer.valueOf(oriredLast[i])==3){
+
+                oriredLastNew[j]="1";
+                oriredLastNew[j+3]="5";
+            }
+            if (Integer.valueOf(oriredLast[i])==4){
+
+                oriredLastNew[j]="2";
+                oriredLastNew[j+3]="6";
+            }
+
+            if (Integer.valueOf(oriredLast[i])==5){
+
+                oriredLastNew[j]="3";
+                oriredLastNew[j+3]="7";
+            }
+            if (Integer.valueOf(oriredLast[i])==6){
+
+                oriredLastNew[j]="4";
+                oriredLastNew[j+3]="8";
+            }
+            if (Integer.valueOf(oriredLast[i])==7){
+
+                oriredLastNew[j]="5";
+                oriredLastNew[j+3]="9";
+            }
+            if (Integer.valueOf(oriredLast[i])==8){
+
+                oriredLastNew[j]="6";
+                oriredLastNew[j+3]="0";
+            }
+            if (Integer.valueOf(oriredLast[i])==9){
+
+                oriredLastNew[j]="7";
+                oriredLastNew[j+3]="2";
+            }
+
+
+
+        }
+
+        HashSet<String> set = new HashSet<>(Arrays.asList(oriredNow));
+        set.retainAll(Arrays.asList(removeDupliArray(oriredLastNew)));
+        return set.size();
+
+    }
     private static boolean hasSame(List<? extends Object> list){
 
         if(null == list) {
@@ -1000,6 +1305,46 @@ public class SpideSanDHistory implements PageProcessor {
         return list.size() == new HashSet<Object>(list).size();
     }
 
+    public void updateCLD(String startIssue, String endIssue ) throws Exception {//更新存量数据的重码、对码、邻码、间码
+        int rcount1=0;
+        for(int issue = Integer.parseInt(startIssue); issue <=Integer.parseInt(endIssue); issue++) {
+            String[] nowSanD;
+            String[] lastSanD;
+            String[] rmdNowSanD;
+            String[] rmdLastSanD;
+            int nowId;
+            int duplicateDan;
+            int oposeDan;
+            int compDan;
+            int secutiveDan;
+            int nextPlusDan;
+            List<SanDHistory> hisRec = sandService.selectSanDhisByIssue(String.valueOf(issue));
+            nowId = hisRec.get(0).getId();
+            nowSanD = hisRec.get(0).getSanD().split(" ");
+
+            List<SanDHistory> lasthisRec = sandService.selectSanDhisById(nowId-1);
+            lastSanD = lasthisRec.get(0).getSanD().split(" ");
+
+            //数组去重
+            rmdNowSanD= removeDupliArray(nowSanD);
+            rmdLastSanD=removeDupliArray(lastSanD);
+
+            //重码
+            duplicateDan=duplicateElem(rmdNowSanD, rmdLastSanD);
+            oposeDan = oposeElem(rmdNowSanD, rmdLastSanD);
+
+            compDan=compElem(rmdNowSanD, rmdLastSanD);
+            secutiveDan = secutiveElem(rmdNowSanD, rmdLastSanD);
+            nextPlusDan = nextPlusElem(rmdNowSanD, rmdLastSanD);
+
+            int result = sandService.updateSanDById(duplicateDan,oposeDan,compDan,secutiveDan,nextPlusDan,nowId);
+
+            if (result == 1) {
+                rcount1 = rcount1 + 1;
+            }
+        }
+        System.out.println("共计" + rcount1 + "条邻间重码历史数据更新");
+    }
     public void pushData() throws Exception {
         //设置POST请求
         Request request = new Request("http://kaijiang.78500.cn/3dshijihao/");

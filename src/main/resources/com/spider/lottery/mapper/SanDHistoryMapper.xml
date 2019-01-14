@@ -35,6 +35,13 @@
         <result column="sjshispice" jdbcType="INTEGER" property="sjshispice"/>
         <result column="gespice" jdbcType="INTEGER" property="gespice"/>
         <result column="sjgespice" jdbcType="INTEGER" property="sjgespice"/>
+
+        <result column="duplicateDan" jdbcType="INTEGER" property="duplicateDan"/>
+        <result column="oposeDan" jdbcType="INTEGER" property="oposeDan"/>
+        <result column="compDan" jdbcType="INTEGER" property="compDan"/>
+        <result column="secutiveDan" jdbcType="INTEGER" property="secutiveDan"/>
+        <result column="nextPlusDan" jdbcType="INTEGER" property="nextPlusDan"/>
+
     </resultMap>
 
 
@@ -46,7 +53,7 @@
     <sql id="BaseColumnList">
         id,issue,date,sanD,shijiD,baihund,shidecade,gesingle,sjbaihund,sjshidecade,sjgesingle,xingtai3D,xingtaisj
         ,sanDV,shijiDV,sanDgc,sanDsum,sanDkd,mtstat,flagContain,flagBai,shijiDsum,shijiDkd,baispice,sjbaispice,
-        shispice,sjshispice,gespice,sjgespice
+        shispice,sjshispice,gespice,sjgespice,duplicateDan,oposeDan,compDan,secutiveDan,nextPlusDan
     </sql>
 
     <insert id="insertSanDHistory" parameterType="com.spider.lottery.pojo.SanDHistory">
@@ -61,8 +68,10 @@
       #{sanDV,jdbcType=VARCHAR}, #{shijiDV,jdbcType=VARCHAR}, #{sanDgc,jdbcType=INTEGER},#{sanDsum,jdbcType=INTEGER},
       #{sanDkd,jdbcType=INTEGER},#{mtstat,jdbcType=INTEGER},#{flagContain,jdbcType=VARCHAR}, #{flagBai,jdbcType=VARCHAR},
       #{shijiDsum,jdbcType=INTEGER}, #{shijiDkd,jdbcType=INTEGER}, #{baispice,jdbcType=INTEGER}, #{sjbaispice,jdbcType=INTEGER},
-      #{shispice,jdbcType=INTEGER}, #{sjshispice,jdbcType=INTEGER},#{gespice,jdbcType=INTEGER}, #{sjgespice,jdbcType=INTEGER}
-      )
+      #{shispice,jdbcType=INTEGER}, #{sjshispice,jdbcType=INTEGER},#{gespice,jdbcType=INTEGER}, #{sjgespice,jdbcType=INTEGER},
+      #{duplicateDan,jdbcType=INTEGER}, #{oposeDan,jdbcType=INTEGER},#{compDan,jdbcType=INTEGER}, #{secutiveDan,jdbcType=INTEGER},
+      #{nextPlusDan,jdbcType=INTEGER}
+        )
     </insert>
 
     <select id="selectSanDbLast" resultMap="sandhistoryResultMap">
@@ -75,4 +84,21 @@
         from sandp.sandhistory where id = (select max(id) from sandp.sandhistory)
     </select>
 
+    <select id="selectSanDhisByIssue" resultMap="sandhistoryResultMap">
+        select id,issue,sanD
+        from sandp.sandhistory where issue=#{issue,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectSanDhisById" resultMap="sandhistoryResultMap">
+        select id,issue,sanD
+        from sandp.sandhistory where id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateSanDById" parameterType="com.spider.lottery.sanDservice.SandService">
+
+        update sandp.sandhistory
+        SET sandp.sandhistory.duplicateDan= #{duplicateDan,jdbcType=INTEGER},sandp.sandhistory.oposeDan= #{oposeDan,jdbcType=INTEGER},
+        sandp.sandhistory.compDan= #{compDan,jdbcType=INTEGER},sandp.sandhistory.secutiveDan= #{secutiveDan,jdbcType=INTEGER},
+        sandp.sandhistory.nextPlusDan= #{nextPlusDan,jdbcType=INTEGER} where sandp.sandhistory.id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -30,8 +30,14 @@ public class sanDhisTask {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring-lottery.xml");
         SpideSanDHistory spideSanDHistory = (SpideSanDHistory) context.getBean("SpideSanDHistory");
-        try {
+/*        try {
             spideSanDHistory.pushData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        try {
+            spideSanDHistory.updateCLD("2018001", "2018309");
         } catch (Exception e) {
             e.printStackTrace();
         }

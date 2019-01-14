@@ -18,12 +18,14 @@
             <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <!--配置数据源-->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" destroy-method="getConnectionProperties">
+        <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
+
+
 
     <!--整合mybatis配置文件-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -86,13 +88,13 @@
     <bean id="SanDCalService" class="com.spider.lottery.sanDservice.SanDCalService"></bean>
     <bean id="CalSanDanMACDTask" class="com.spider.lottery.pretask.CalSanDanMACDTask"></bean>
     <bean id="SanDExpertGroupTask" class="com.spider.lottery.pretask.SanDExpertGroupTask"></bean>
+    <bean id="SanDInitExpertData" class="com.spider.lottery.sanD.SanDInitExpertData"></bean>
 
 
-
-
+    <bean id="SsqPreTask" class="com.spider.lottery.precodition.task.SsqPreTask"></bean>
 
     <!--需要预置输入数据时需要注释掉task定时配置，不然会提示生成2个bean-->
-    <import resource="spring-quartz.xml"/>
+<!--    <import resource="spring-quartz.xml"/>-->
 </beans>
 
 

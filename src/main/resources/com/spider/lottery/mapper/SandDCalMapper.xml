@@ -90,15 +90,15 @@
 
     <select id="selectIdByDVasc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
         select id from sandp.sanddankill
-        where singDanhit = #{singDanhit,jdbcType=INTEGER} ORDER BY id ASC limit 1
+        where singDanlasthit = #{singDanlasthit,jdbcType=INTEGER} ORDER BY id ASC limit 1
     </select>
 
     <select id="selectIdByDVdesc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
         select id from sandp.sanddankill
-        where singDanhit = #{singDanhit,jdbcType=INTEGER} ORDER BY id DESC limit 1
+        where singDanlasthit = #{singDanlasthit,jdbcType=INTEGER} ORDER BY id DESC limit 1
     </select>
 
-    <select id="selectByID"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+    <select id="selectByID"  resultMap="sandDCalResultMap"  >
         select issue, sanDV, sanDsum, sanDkd, singDan, fiveDanV, sumDanV, kuaDanV from sandp.sanddankill
         where id = #{id,jdbcType=INTEGER}
     </select>
@@ -119,7 +119,7 @@
         select
         <include refid="selectHitList"/>
         from sandp.sanddankill
-        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND singDanconhit = #{singDanconhit,jdbcType=INTEGER} AND id &lt;= #{endid,jdbcType=INTEGER}
+        WHERE expertname = #{expertname,jdbcType=VARCHAR} AND singDanlasthit = #{singDanlasthit,jdbcType=INTEGER} AND id &lt;= #{endid,jdbcType=INTEGER}
     </select>
 
     <select id="selectIDbyExpHitlast"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
@@ -162,6 +162,16 @@
     <select id="selectIdByRockdesc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
         select id from sandp.sanddankill
         where spicerock = #{spicerock,jdbcType=INTEGER} ORDER BY id DESC limit 1
+    </select>
+
+    <select id="selectIdBySkewnasc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where fiveDanskewn = #{fiveDanskewn,jdbcType=INTEGER} ORDER BY id ASC limit 1
+    </select>
+
+    <select id="selectIdBySkewndesc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
+        select id from sandp.sanddankill
+        where fiveDanskewn = #{fiveDanskewn,jdbcType=INTEGER} ORDER BY id DESC limit 1
     </select>
 
     <select id="selectIdBySinDEMA3asc"  resultType="int" parameterType="com.spider.lottery.sanDservice.SanDCalService" >
@@ -239,7 +249,7 @@
         sumDanhit,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortstat,sumDFortlastMACD,
         kuaDanhit,kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,kuaDanDEA,kuaDFortMACD,kuaDFortstat,kuaDFortlastMACD
         from sandp.sanddankill
-        WHERE id &lt;= #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,7
+        WHERE id &lt; #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,7
     </select>
 
     <select id="selectIDbyEMA3last3"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
@@ -250,7 +260,7 @@
         sumDanhit,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortstat,sumDFortlastMACD,
         kuaDanhit,kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,kuaDanDEA,kuaDFortMACD,kuaDFortstat,kuaDFortlastMACD
         from sandp.sanddankill
-        WHERE id &lt;= #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,3
+        WHERE id &lt; #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,3
     </select>
 
 
@@ -262,7 +272,7 @@
         sumDanhit,sumDFortEMA3,sumDFortEMA7,sumDanDIF,sumDanDEA,sumDFortMACD,sumDFortstat,sumDFortlastMACD,
         kuaDanhit,kuaDFortEMA3,kuaDFortEMA7,kuaDanDIF,kuaDanDEA,kuaDFortMACD,kuaDFortstat,kuaDFortlastMACD
         from sandp.sanddankill
-        WHERE id &lt;= #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,5
+        WHERE id &lt; #{id,jdbcType=INTEGER} AND expertname = #{expertname,jdbcType=VARCHAR} ORDER BY id desc limit 0,5
     </select>
 
     <update id="updateSanDEMA"  parameterType="com.spider.lottery.sanDservice.SanDCalService">
@@ -288,4 +298,10 @@
         ,sandp.sanddankill.kuaDFortlastMACD= #{kuaDFortlastMACD,jdbcType=DOUBLE}
         WHERE sandp.sanddankill.id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="selectxinbyExpIssue"  resultMap="sandDCalResultMap" parameterType="com.spider.lottery.sanDservice.SanDCalService">
+        select *
+        from sandp.sanddankill
+        WHERE issue = #{issue,jdbcType=VARCHAR} AND expertname = #{expertname,jdbcType=VARCHAR}
+    </select>
 </mapper>

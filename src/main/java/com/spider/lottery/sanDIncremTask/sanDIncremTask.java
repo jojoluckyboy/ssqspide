@@ -52,8 +52,15 @@ public class sanDIncremTask {
 
 
     public void increment() throws Exception {
+
+
+        System.out.println("预先执行昨天没跑完的");//新版有 旧版无
+        spiderIncremExpertSanD.pushIcrementDataW();
+
+
         System.out.println("调度执行SanD job1");
         sanDIncrementHistory.pushIcrementData();
+
 
         int IncreLine=sanDIncrementHistory.getIncreDcount();
         System.out.println("新增共计"+IncreLine+"条3D历史数据成功入库");
@@ -72,18 +79,25 @@ public class sanDIncremTask {
         List<SanDHistory> lastQishu = sandService.selectSanDbLast();
         String qishuH = lastQishu.get(0).getIssue();
 
-        if(Integer.valueOf(qishuTr)>Integer.valueOf(qishuH)){
+        if(Integer.valueOf(qishuTr)>Integer.valueOf(qishuH)+1){//新版Integer.valueOf(qishuTr)>=Integer.valueOf(qishuH)+1,旧版Integer.valueOf(qishuTr)>Integer.valueOf(qishuH)+1
 
             System.out.println("数据倒挂出错");
 
-        } else{
+        } else if(Integer.valueOf(qishuTr)==Integer.valueOf(qishuH)+1){
 
-                    //*记录导入了多少历史数据
+            System.out.println("数据已更新到今天，今天未出开奖结果");
+
+        } else
+        {
+
+                    //记录导入了多少历史数据
             int Result=sanDHisMatchService.updateSanDMatch(qishuTr,qishuH);
+
             System.out.println("共计"+ Result+"条3D历史匹配数据成功入库");
 
 
         }
+
 
         System.out.println("调度执行SanD job3");
         calSanDHitTask.pushIcrementDataTask();

@@ -61,6 +61,18 @@ public class SanDHistory {
 
     private int sjgespice;
 
+    private int duplicateDan;
+
+    private int oposeDan;
+
+    private int compDan;
+
+    private int secutiveDan;
+
+    private int nextPlusDan;
+
+
+
 
     public void setId(int id) {
         this.id = id;
@@ -291,6 +303,45 @@ public class SanDHistory {
         this.sjgespice = sjgespice;
     }
 
+    public int getDuplicateDan() {
+        return duplicateDan;
+    }
+
+    public void setDuplicateDan(int duplicateDan) {
+        this.duplicateDan = duplicateDan;
+    }
+
+    public int getOposeDan() {
+        return oposeDan;
+    }
+
+    public void setOposeDan(int oposeDan) {
+        this.oposeDan = oposeDan;
+    }
+
+    public int getCompDan() {
+        return compDan;
+    }
+
+    public void setCompDan(int compDan) {
+        this.compDan = compDan;
+    }
+
+    public int getSecutiveDan() {
+        return secutiveDan;
+    }
+
+    public void setSecutiveDan(int secutiveDan) {
+        this.secutiveDan = secutiveDan;
+    }
+
+    public int getNextPlusDan() {
+        return nextPlusDan;
+    }
+
+    public void setNextPlusDan(int nextPlusDan) {
+        this.nextPlusDan = nextPlusDan;
+    }
 
 
 }

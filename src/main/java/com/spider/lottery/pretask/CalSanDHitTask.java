@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class CalSanDHitTask {
     private int rcount = 0;
     private int rcount1 = 0;
 
+    @Transactional
     public void pushIcrementData() throws Exception {
 
 
@@ -188,7 +190,9 @@ public class CalSanDHitTask {
                 2015001,2014357
                 2016001,2015358
                 2017001,2016359
-                2018001,2017358*/
+                2018001,2017358
+                2018358,2019001
+                */
 
                 boolean bool1 = false;
                 boolean bool2 = false;
@@ -197,6 +201,7 @@ public class CalSanDHitTask {
                 boolean bool5 = false;
                 boolean bool6 = false;
                 boolean bool7 = false;
+                boolean bool8 = false;
 
 
                 if (findLastid.size() == 0) {
@@ -314,7 +319,8 @@ public class CalSanDHitTask {
                 2015001,2014357
                 2016001,2015358
                 2017001,2016359
-                2018001,2017358**/
+                2018001,2017358
+                2018358,2019001**/
 
                 boolean bool1 = false;
                 boolean bool2 = false;
@@ -323,6 +329,7 @@ public class CalSanDHitTask {
                 boolean bool5 = false;
                 boolean bool6 = false;
                 boolean bool7 = false;
+                boolean bool8 = false;
 
 
                 if (findLastid.size() == 0) {
@@ -357,11 +364,12 @@ public class CalSanDHitTask {
                         bool4 = fissue.equals("2016001") && lissue.equals("2015358");
                         bool5 = fissue.equals("2017001") && lissue.equals("2016359");
                         bool6 = fissue.equals("2018001") && lissue.equals("2017358");
+                        bool8 = fissue.equals("2019001") && lissue.equals("2018358");
                         bool7 = lissue.equals(String.valueOf(Integer.parseInt(fissue) - 1));
 
                         List<SandDankill> newfind = sanDCalService.selectIDbyUpdateHit(fid, expertname);
 
-                        if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7) {
+                        if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7 || bool8) {
 
                             singDanlasthit = newfind.get(1).getSingDanhit();
                             fiveDanlasthit = newfind.get(1).getFiveDanhit();
@@ -515,10 +523,11 @@ public class CalSanDHitTask {
                         bool4 = fissue.equals("2016001") && lissue.equals("2015358");
                         bool5 = fissue.equals("2017001") && lissue.equals("2016359");
                         bool6 = fissue.equals("2018001") && lissue.equals("2017358");
+                        bool8 = fissue.equals("2019001") && lissue.equals("2018358");
                         bool7 = lissue.equals(String.valueOf(Integer.parseInt(fissue) - 1));
 
                         List<SandDankill> newfind = sanDCalService.selectIDbyUpdateHit(fid, expertname);
-                        if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7) {
+                        if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7 || bool8) {
 
                             singDanlasthit = newfind.get(1).getSingDanhit();
                             fiveDanlasthit = newfind.get(1).getFiveDanhit();
@@ -608,6 +617,7 @@ public class CalSanDHitTask {
 
     }
 
+
     public void pushIcrementDataTask() throws Exception {
 
 
@@ -630,7 +640,7 @@ public class CalSanDHitTask {
         }
 
 
-        if(startid == 0){
+      if(startid == 0){
 
             return;
         }
@@ -638,6 +648,7 @@ public class CalSanDHitTask {
         SandDankill sandDankill = new SandDankill();
 
         for (int id = startid; id < endid +1 ; id++) {
+
 
             List<SandDankill> hitresult = sanDCalService.selectByID(id);
             String sanDV = hitresult.get(0).getSanDV();
@@ -651,7 +662,12 @@ public class CalSanDHitTask {
 
             //判断独胆命中
             int singDanhit = 0;
-            if(singDan.equals("--")){
+
+            if(sanDV==null){//新版新加,旧版没有
+
+                singDanhit = 888;
+
+            }else if(singDan.equals("--")){
 
                 singDanhit = 0;
 
@@ -669,7 +685,11 @@ public class CalSanDHitTask {
 
             //判断五胆命中
             int fiveDanhit = 0;
-            if(fiveDanV.equals("--")){
+            if(sanDV==null){//新版新加,旧版没有
+
+                fiveDanhit = 888;
+
+            }else if (fiveDanV.equals("--")){
 
                 fiveDanhit = 0;
 
@@ -686,7 +706,11 @@ public class CalSanDHitTask {
 
             //判断和值命中
             int sumDanhit = 0;
-            if(sumDanV.equals("--")){
+            if(sanDV==null){//新版新加,旧版没有
+
+                sumDanhit = 888;
+
+            }else if(sumDanV.equals("--")){
 
                 sumDanhit = 0;
 
@@ -704,7 +728,11 @@ public class CalSanDHitTask {
 
             //判断跨度命中
             int kuaDanhit = 0;
-            if(kuaDanV.equals("--")){
+            if(sanDV==null){//新版新加,旧版没有
+
+                kuaDanhit = 888;
+
+            }else if(kuaDanV.equals("--")){
 
                 kuaDanhit = 0;
 
@@ -728,8 +756,8 @@ public class CalSanDHitTask {
         }
         System.out.println("共计" + rcount1 + "条Hit历史数据更新");
 
-        List<String> findexpert = sanDCalService.selectexpertByID(startid, endid);
 
+        List<String> findexpert = sanDCalService.selectexpertByID(startid, endid);
         Loop1:
         for (int i = 0; i < findexpert.size(); i++) {
 
@@ -770,7 +798,9 @@ public class CalSanDHitTask {
                 2015001,2014357
                 2016001,2015358
                 2017001,2016359
-                2018001,2017358*/
+                2018001,2017358
+                2018358,2019001
+                */
 
                 boolean bool1 = false;
                 boolean bool2 = false;
@@ -779,9 +809,29 @@ public class CalSanDHitTask {
                 boolean bool5 = false;
                 boolean bool6 = false;
                 boolean bool7 = false;
+                boolean bool8 = false;
 
+                if(findid.get(0).getSingDanhit()==888){//新版新加,旧版没有
 
-                if (findLastid.size() == 0) {
+                    singDanconhitTmp = 888;
+                    fiveDanconhitTmp = 888;
+
+                    sumDanconhitTmp = 888;
+                    kuaDanconhitTmp = 888;
+
+                    singDanlasthit = 888;
+                    fiveDanlasthit = 888;
+
+                    sumDanlasthit = 888;
+                    kuaDanlasthit = 888;
+
+                    int Result = sanDCalService.updateSanDconhit(singDanlasthit, singDanconhitTmp, fiveDanlasthit, fiveDanconhitTmp, sumDanlasthit,
+                            sumDanconhitTmp, kuaDanlasthit, kuaDanconhitTmp, expID);
+                    if (Result == 1) {
+                        rcount1 = rcount1 + 1;
+                    }
+
+                }else if (findLastid.size() == 0) {
 
                     singDanconhitTmp = 0;
                     fiveDanconhitTmp = 0;
@@ -892,6 +942,7 @@ public class CalSanDHitTask {
                 int kuaDanlasthitTmp = 0;
                 int kuaDanconhitTmp = 0;
 
+
                 //增加一年加一个
 
 /*            2013001,2012359
@@ -908,21 +959,44 @@ public class CalSanDHitTask {
                 boolean bool5 = false;
                 boolean bool6 = false;
                 boolean bool7 = false;
+                boolean bool8 = false;
 
 
-                if (findLastid.size() == 0) {
+                if(findid.get(0).getSingDanhit()==888){//新版新加,旧版没有
 
-                    singDanconhitTmp = 0;
-                    fiveDanconhitTmp = 0;
+                    singDanconhitTmp = 888;
+                    fiveDanconhitTmp = 888;
 
-                    sumDanconhitTmp = 0;
-                    kuaDanconhitTmp = 0;
+                    sumDanconhitTmp = 888;
+                    kuaDanconhitTmp = 888;
 
-                    singDanlasthit = 0;
-                    fiveDanlasthit = 0;
+                    singDanlasthit = 888;
+                    fiveDanlasthit = 888;
 
-                    sumDanlasthit = 0;
-                    kuaDanlasthit = 0;
+                    sumDanlasthit = 888;
+                    kuaDanlasthit = 888;
+
+                    int Result = sanDCalService.updateSanDconhit(singDanlasthit, singDanconhitTmp, fiveDanlasthit, fiveDanconhitTmp, sumDanlasthit,
+                            sumDanconhitTmp, kuaDanlasthit, kuaDanconhitTmp, expID);
+                    if (Result == 1) {
+                        rcount1 = rcount1 + 1;
+                    }
+
+                }else if (findLastid.size() == 0) {
+
+
+                        singDanconhitTmp = 0;
+                        fiveDanconhitTmp = 0;
+
+                        sumDanconhitTmp = 0;
+                        kuaDanconhitTmp = 0;
+
+                        singDanlasthit = 0;
+                        fiveDanlasthit = 0;
+
+                        sumDanlasthit = 0;
+                        kuaDanlasthit = 0;
+
 
                     int Result = sanDCalService.updateSanDconhit(singDanlasthit, singDanconhitTmp, fiveDanlasthit, fiveDanconhitTmp, sumDanlasthit,
                             sumDanconhitTmp, kuaDanlasthit, kuaDanconhitTmp, expID);
@@ -942,11 +1016,31 @@ public class CalSanDHitTask {
                         bool4 = fissue.equals("2016001") && lissue.equals("2015358");
                         bool5 = fissue.equals("2017001") && lissue.equals("2016359");
                         bool6 = fissue.equals("2018001") && lissue.equals("2017358");
+                        bool8 = fissue.equals("2019001") && lissue.equals("2018358");
                         bool7 = lissue.equals(String.valueOf(Integer.parseInt(fissue) - 1));
 
                         List<SandDankill> newfind = sanDCalService.selectIDbyUpdateHit(fid, expertname);
+                        if(findid.get(j).getSingDanhit()==888){//新版新加,旧版没有
 
-                        if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7) {
+                            singDanconhitTmp = 888;
+                            fiveDanconhitTmp = 888;
+
+                            sumDanconhitTmp = 888;
+                            kuaDanconhitTmp = 888;
+
+                            singDanlasthit = 888;
+                            fiveDanlasthit = 888;
+
+                            sumDanlasthit = 888;
+                            kuaDanlasthit = 888;
+
+                            Result = sanDCalService.updateSanDconhit(singDanlasthit, singDanconhitTmp, fiveDanlasthit, fiveDanconhitTmp, sumDanlasthit,
+                                    sumDanconhitTmp, kuaDanlasthit, kuaDanconhitTmp, expID);
+                            if (Result == 1) {
+                                rcount1 = rcount1 + 1;
+                            }
+
+                        } else if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7|| bool8) {
 
                             singDanlasthit = newfind.get(1).getSingDanhit();
                             fiveDanlasthit = newfind.get(1).getFiveDanhit();
@@ -1025,6 +1119,7 @@ public class CalSanDHitTask {
 
                         newfind.clear();
 
+
                     }
 
                 } else {
@@ -1100,10 +1195,31 @@ public class CalSanDHitTask {
                         bool4 = fissue.equals("2016001") && lissue.equals("2015358");
                         bool5 = fissue.equals("2017001") && lissue.equals("2016359");
                         bool6 = fissue.equals("2018001") && lissue.equals("2017358");
+                        bool8 = fissue.equals("2019001") && lissue.equals("2018358");
                         bool7 = lissue.equals(String.valueOf(Integer.parseInt(fissue) - 1));
 
                         List<SandDankill> newfind = sanDCalService.selectIDbyUpdateHit(fid, expertname);
-                        if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7) {
+                        if(findid.get(j).getSingDanhit()==888){//新版新加,旧版没有
+
+                            singDanconhitTmp = 888;
+                            fiveDanconhitTmp = 888;
+
+                            sumDanconhitTmp = 888;
+                            kuaDanconhitTmp = 888;
+
+                            singDanlasthit = 888;
+                            fiveDanlasthit = 888;
+
+                            sumDanlasthit = 888;
+                            kuaDanlasthit = 888;
+
+                            Result = sanDCalService.updateSanDconhit(singDanlasthit, singDanconhitTmp, fiveDanlasthit, fiveDanconhitTmp, sumDanlasthit,
+                                    sumDanconhitTmp, kuaDanlasthit, kuaDanconhitTmp, fid);
+                            if (Result == 1) {
+                                rcount1 = rcount1 + 1;
+                            }
+
+                        }else if (bool1 || bool2 || bool3 || bool4 || bool5 || bool6 || bool7 || bool8) {
 
                             singDanlasthit = newfind.get(1).getSingDanhit();
                             fiveDanlasthit = newfind.get(1).getFiveDanhit();

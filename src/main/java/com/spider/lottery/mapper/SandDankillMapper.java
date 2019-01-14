@@ -15,6 +15,7 @@ public interface SandDankillMapper {
     int updateSanDMatch(@Param("time1") String time1, @Param("time2")String time2);
 
     List<SandDankill> selectSanDkillHisMatchfirst();
+    List<SandDankill> selectResbyExpIssue( @Param("issue") String issue, @Param("expertname") String expertname);
 
 
 }

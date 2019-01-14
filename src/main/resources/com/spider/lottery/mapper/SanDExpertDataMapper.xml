@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.lottery.mapper.SanDExpertDataMapper">
+    <resultMap id="sandexpertdataResultMap" type="com.spider.lottery.pojo.SanDExpertData">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="issue" jdbcType="VARCHAR" property="issue"/>
+        <result column="龙山一怪" jdbcType="VARCHAR" property="LSYG"/>
+        <result column="黑白猜" jdbcType="VARCHAR" property="HBC"/>
+        <result column="高斯" jdbcType="VARCHAR" property="GS"/>
+        <result column="鲁宾汉" jdbcType="VARCHAR" property="LBH"/>
+        <result column="马上定胆" jdbcType="VARCHAR" property="MSDD"/>
+        <result column="飞扬哥" jdbcType="VARCHAR" property="FYG"/>
+        <result column="风花雪月" jdbcType="VARCHAR" property="FHXY"/>
+        <result column="领衔玩彩" jdbcType="VARCHAR" property="LXWC"/>
+        <result column="领衔彩军" jdbcType="VARCHAR" property="LXCJ"/>
+        <result column="露西娅" jdbcType="VARCHAR" property="LXY"/>
+        <result column="雄霸天下" jdbcType="VARCHAR" property="XBTX"/>
+        <result column="隐鳞藏彩" jdbcType="VARCHAR" property="YLCC"/>
+        <result column="隐胆藏彩" jdbcType="VARCHAR" property="YDCC"/>
+        <result column="闪拳" jdbcType="VARCHAR" property="SQ"/>
+        <result column="金银铁胆" jdbcType="VARCHAR" property="JYTD"/>
+        <result column="金胆出炉" jdbcType="VARCHAR" property="JDCL"/>
+        <result column="酒纯的香" jdbcType="VARCHAR" property="JCDX"/>
+        <result column="逐鹿中原" jdbcType="VARCHAR" property="ZLZY"/>
+        <result column="连连碰" jdbcType="VARCHAR" property="LLB"/>
+        <result column="连环定胆" jdbcType="VARCHAR" property="LHDD"/>
+        <result column="运河散人" jdbcType="VARCHAR" property="YHSR"/>
+        <result column="迎彩运" jdbcType="VARCHAR" property="YCY"/>
+        <result column="购彩小子" jdbcType="VARCHAR" property="GCXZ"/>
+        <result column="贝贝托" jdbcType="VARCHAR" property="BBT"/>
+        <result column="豹变南山" jdbcType="VARCHAR" property="BBNS"/>
+        <result column="谋码高手" jdbcType="VARCHAR" property="MMGS"/>
+        <result column="言必有中" jdbcType="VARCHAR" property="YBYZ"/>
+        <result column="衡山说彩" jdbcType="VARCHAR" property="HSSC"/>
+        <result column="虹桥客" jdbcType="VARCHAR" property="HQK"/>
+        <result column="蓝球之家" jdbcType="VARCHAR" property="LQZJ"/>
+        <result column="英明胆王" jdbcType="VARCHAR" property="YMDW"/>
+        <result column="胜多负少" jdbcType="VARCHAR" property="SDFS"/>
+        <result column="胆码神算" jdbcType="VARCHAR" property="DMSS"/>
+        <result column="胆中生" jdbcType="VARCHAR" property="DZS"/>
+        <result column="老杨说彩" jdbcType="VARCHAR" property="LYSC"/>
+        <result column="美女说号" jdbcType="VARCHAR" property="MNSH"/>
+        <result column="组号高手" jdbcType="VARCHAR" property="ZHGS"/>
+        <result column="红尘" jdbcType="VARCHAR" property="HC"/>
+        <result column="精益求胆" jdbcType="VARCHAR" property="JYQD"/>
+        <result column="章文红" jdbcType="VARCHAR" property="ZWH"/>
+        <result column="稳操胜券" jdbcType="VARCHAR" property="WCSQ"/>
+        <result column="程程" jdbcType="VARCHAR" property="CC"/>
+        <result column="程咬金" jdbcType="VARCHAR" property="CYJ"/>
+        <result column="神马胆" jdbcType="VARCHAR" property="SMD"/>
+        <result column="神手破解" jdbcType="VARCHAR" property="SSPJ"/>
+        <result column="神之子" jdbcType="VARCHAR" property="SZZ"/>
+        <result column="知瞳研彩" jdbcType="VARCHAR" property="ZTYC"/>
+        <result column="真有戏" jdbcType="VARCHAR" property="ZYX"/>
+        <result column="看胆杀蓝" jdbcType="VARCHAR" property="KDSL"/>
+        <result column="看胆中金" jdbcType="VARCHAR" property="KDZJ"/>
+        <result column="看就准" jdbcType="VARCHAR" property="KJZ"/>
+        <result column="相濡以沫" jdbcType="VARCHAR" property="XRYM"/>
+        <result column="直拿下" jdbcType="VARCHAR" property="ZNX"/>
+        <result column="百城之富" jdbcType="VARCHAR" property="BCZF"/>
+        <result column="百万雄击" jdbcType="VARCHAR" property="BWXJ"/>
+        <result column="白发百中" jdbcType="VARCHAR" property="BFBZ"/>
+        <result column="疯狂彩迷" jdbcType="VARCHAR" property="FKCM"/>
+        <result column="玩彩顽童" jdbcType="VARCHAR" property="WCWT"/>
+        <result column="玩彩大师" jdbcType="VARCHAR" property="WCDS"/>
+        <result column="王赢家" jdbcType="VARCHAR" property="WYJ"/>
+        <result column="独胆天涯" jdbcType="VARCHAR" property="DDTY"/>
+        <result column="独树一帜" jdbcType="VARCHAR" property="DSYZ"/>
+        <result column="爵士" jdbcType="VARCHAR" property="JS"/>
+        <result column="爱金豆子" jdbcType="VARCHAR" property="AJDZ"/>
+        <result column="焦点" jdbcType="VARCHAR" property="JD"/>
+        <result column="潇雨" jdbcType="VARCHAR" property="XIAOY"/>
+        <result column="温柔看胆" jdbcType="VARCHAR" property="WRKD"/>
+        <result column="混世魔王" jdbcType="VARCHAR" property="HSMW"/>
+        <result column="测胆王" jdbcType="VARCHAR" property="CDW"/>
+        <result column="没输过钱" jdbcType="VARCHAR" property="MSGQ"/>
+        <result column="水煮鱼" jdbcType="VARCHAR" property="SZY"/>
+        <result column="水上黄昏" jdbcType="VARCHAR" property="SSHH"/>
+        <result column="每天一彩" jdbcType="VARCHAR" property="MTYC"/>
+        <result column="此码必出" jdbcType="VARCHAR" property="CMBC"/>
+        <result column="林兴洛" jdbcType="VARCHAR" property="LXL"/>
+        <result column="李逵" jdbcType="VARCHAR" property="LK"/>
+        <result column="杀蓝之家" jdbcType="VARCHAR" property="SLZJ"/>
+        <result column="杀红助手" jdbcType="VARCHAR" property="SHZS"/>
+        <result column="杀破狼" jdbcType="VARCHAR" property="SPL"/>
+        <result column="杀号出众" jdbcType="VARCHAR" property="SHCZ"/>
+        <result column="末世" jdbcType="VARCHAR" property="MS"/>
+        <result column="朋哥爱彩" jdbcType="VARCHAR" property="PGAC"/>
+        <result column="暮浅" jdbcType="VARCHAR" property="MQ"/>
+        <result column="星曜" jdbcType="VARCHAR" property="XINY"/>
+        <result column="易经彩" jdbcType="VARCHAR" property="YJC"/>
+        <result column="旺财宝贝" jdbcType="VARCHAR" property="WCBB"/>
+        <result column="旷世熊" jdbcType="VARCHAR" property="KSX"/>
+        <result column="数字控" jdbcType="VARCHAR" property="SZK"/>
+        <result column="捉星神手" jdbcType="VARCHAR" property="ZXSS"/>
+        <result column="指路人" jdbcType="VARCHAR" property="ZLR"/>
+        <result column="技术彩民" jdbcType="VARCHAR" property="JSCM"/>
+        <result column="打豆豆" jdbcType="VARCHAR" property="DDD"/>
+        <result column="才子佳人" jdbcType="VARCHAR" property="CZJR"/>
+        <result column="彩迷星探" jdbcType="VARCHAR" property="CMXT"/>
+        <result column="彩色蜡笔" jdbcType="VARCHAR" property="CSLB"/>
+        <result column="彩色系" jdbcType="VARCHAR" property="CSX"/>
+        <result column="彩票果果" jdbcType="VARCHAR" property="CPGG"/>
+        <result column="彩神人" jdbcType="VARCHAR" property="CSR"/>
+        <result column="彩研师" jdbcType="VARCHAR" property="CYS"/>
+        <result column="彩界老大" jdbcType="VARCHAR" property="CJLD"/>
+        <result column="彩王布阵" jdbcType="VARCHAR" property="CWBZ"/>
+        <result column="彩之骄子" jdbcType="VARCHAR" property="CZJZ"/>
+        <result column="当场出彩" jdbcType="VARCHAR" property="DCCC"/>
+        <result column="开心买彩" jdbcType="VARCHAR" property="KXMC"/>
+        <result column="布衣说号" jdbcType="VARCHAR" property="BYSH"/>
+        <result column="小鬼看胆" jdbcType="VARCHAR" property="XGKD"/>
+        <result column="实验山地" jdbcType="VARCHAR" property="SYSD"/>
+        <result column="定胆老手" jdbcType="VARCHAR" property="DDLS"/>
+        <result column="定胆招财" jdbcType="VARCHAR" property="DDZC"/>
+        <result column="定胆专家" jdbcType="VARCHAR" property="DDZJ"/>
+        <result column="安然" jdbcType="VARCHAR" property="AR"/>
+        <result column="安德" jdbcType="VARCHAR" property="AD"/>
+        <result column="安庆彩哥" jdbcType="VARCHAR" property="AQCG"/>
+        <result column="守望" jdbcType="VARCHAR" property="SW"/>
+        <result column="存胆库" jdbcType="VARCHAR" property="CDK"/>
+        <result column="子牙神算" jdbcType="VARCHAR" property="ZYSS"/>
+        <result column="妹子说彩" jdbcType="VARCHAR" property="MZSC"/>
+        <result column="天蝎王" jdbcType="VARCHAR" property="TXW"/>
+        <result column="天职" jdbcType="VARCHAR" property="TZ"/>
+        <result column="天涯彩" jdbcType="VARCHAR" property="TYC"/>
+        <result column="天才彩女" jdbcType="VARCHAR" property="TCCN"/>
+        <result column="天天向下" jdbcType="VARCHAR" property="TTXX"/>
+        <result column="大骆驼" jdbcType="VARCHAR" property="DLT"/>
+        <result column="夜眼雄鹰" jdbcType="VARCHAR" property="YYXY"/>
+        <result column="围号狙手" jdbcType="VARCHAR" property="WHJS"/>
+        <result column="唯我独彩" jdbcType="VARCHAR" property="WWDC"/>
+        <result column="唐儿" jdbcType="VARCHAR" property="TE"/>
+        <result column="和值高手" jdbcType="VARCHAR" property="HZGS"/>
+        <result column="后区密码" jdbcType="VARCHAR" property="HQMM"/>
+        <result column="名扬天下" jdbcType="VARCHAR" property="MYTX"/>
+        <result column="只若初见" jdbcType="VARCHAR" property="ZRCJ"/>
+        <result column="只争朝夕" jdbcType="VARCHAR" property="ZZCX"/>
+        <result column="古蓝天者" jdbcType="VARCHAR" property="GLTZ"/>
+        <result column="双眼龙" jdbcType="VARCHAR" property="SYL"/>
+        <result column="又中一码" jdbcType="VARCHAR" property="YZYM"/>
+        <result column="博通" jdbcType="VARCHAR" property="BT"/>
+        <result column="南方神彩" jdbcType="VARCHAR" property="NFCS"/>
+        <result column="南宫傲" jdbcType="VARCHAR" property="NGA"/>
+        <result column="半醉人间" jdbcType="VARCHAR" property="BZRJ"/>
+        <result column="半仙" jdbcType="VARCHAR" property="BX"/>
+        <result column="十拿九稳" jdbcType="VARCHAR" property="SNJW"/>
+        <result column="北海" jdbcType="VARCHAR" property="BH"/>
+        <result column="剑胆柔情" jdbcType="VARCHAR" property="JDRQ"/>
+        <result column="刘邦测号" jdbcType="VARCHAR" property="LBCH"/>
+        <result column="刘棋" jdbcType="VARCHAR" property="LQ"/>
+        <result column="凌波仙子" jdbcType="VARCHAR" property="LBXZ"/>
+        <result column="冒险" jdbcType="VARCHAR" property="MX"/>
+        <result column="八卦测码" jdbcType="VARCHAR" property="BGCM"/>
+        <result column="全力夺金" jdbcType="VARCHAR" property="QLDJ"/>
+        <result column="克敌制胜" jdbcType="VARCHAR" property="KDZS"/>
+        <result column="元始天尊" jdbcType="VARCHAR" property="YSTZ"/>
+        <result column="偷闲看彩" jdbcType="VARCHAR" property="TXKC"/>
+        <result column="信码由缰" jdbcType="VARCHAR" property="XMYJ"/>
+        <result column="人定胜天" jdbcType="VARCHAR" property="RDST"/>
+        <result column="亡灵天涯" jdbcType="VARCHAR" property="WLTY"/>
+        <result column="乱世佳人" jdbcType="VARCHAR" property="LSJR"/>
+        <result column="乡巴老" jdbcType="VARCHAR" property="XBL"/>
+        <result column="乐透达人" jdbcType="VARCHAR" property="LTDR"/>
+        <result column="中奖秘笈" jdbcType="VARCHAR" property="ZJMJ"/>
+        <result column="中奖有我" jdbcType="VARCHAR" property="ZJYW"/>
+        <result column="中奖之路" jdbcType="VARCHAR" property="ZJZL"/>
+        <result column="中号在身" jdbcType="VARCHAR" property="ZHZS"/>
+        <result column="东方花琦" jdbcType="VARCHAR" property="DFHQ"/>
+        <result column="专长杀号" jdbcType="VARCHAR" property="ZCSH"/>
+        <result column="专研独胆" jdbcType="VARCHAR" property="ZYDD"/>
+        <result column="不老松" jdbcType="VARCHAR" property="BLS"/>
+        <result column="三石" jdbcType="VARCHAR" property="SS"/>
+        <result column="一纸乱言" jdbcType="VARCHAR" property="YZLY"/>
+        <result column="一如既往" jdbcType="VARCHAR" property="YRJW"/>
+        <result column="一代彩神" jdbcType="VARCHAR" property="YDCS"/>
+        <result column="一人留" jdbcType="VARCHAR" property="YRL"/>
+        <result column="FC达人" jdbcType="VARCHAR" property="FCDR"/>
+
+    </resultMap>
+
+
+
+    <sql id="BaseColumnList">
+        id,issue,龙山一怪,黑白猜,高斯,鲁宾汉,马上定胆,飞扬哥,风花雪月,领衔玩彩,领衔彩军,露西娅,雄霸天下,隐鳞藏彩,隐胆藏彩,闪拳,
+        金银铁胆,金胆出炉,酒纯的香,逐鹿中原,连连碰,连环定胆,运河散人,迎彩运,购彩小子,贝贝托,豹变南山,谋码高手,言必有中,衡山说彩,虹桥客
+        ,蓝球之家,英明胆王,胜多负少,胆码神算,胆中生,老杨说彩,美女说号,组号高手,红尘,精益求胆,章文红,稳操胜券,程程,程咬金,神马胆,
+        神手破解,神之子,知瞳研彩,真有戏,看胆杀蓝,看胆中金,看就准,相濡以沫,直拿下,百城之富,百万雄击,白发百中,疯狂彩迷,玩彩顽童,玩彩大师
+        ,王赢家,独胆天涯,独树一帜,爵士,爱金豆子,焦点,潇雨,温柔看胆,混世魔王,测胆王,没输过钱,水煮鱼,水上黄昏,每天一彩,此码必出,林兴洛,
+        李逵,杀蓝之家,杀红助手,杀破狼,杀号出众,末世,朋哥爱彩,暮浅,星曜,易经彩,旺财宝贝,旷世熊,数字控,捉星神手,指路人,技术彩民,打豆豆,
+        才子佳人,彩迷星探,彩色蜡笔,彩色系,彩票果果,彩神人,彩研师,彩界老大,彩王布阵,彩之骄子,当场出彩,开心买彩,布衣说号,小鬼看胆,
+        实验山地,定胆老手,定胆招财,定胆专家,安然,安德,安庆彩哥,守望,存胆库,子牙神算,妹子说彩,天蝎王,天职,天涯彩,天才彩女,天天向下,
+        大骆驼,夜眼雄鹰,围号狙手,唯我独彩,唐儿,和值高手,后区密码,名扬天下,只若初见,只争朝夕,古蓝天者,双眼龙,又中一码,博通,南方神彩,
+        南宫傲,半醉人间,半仙,十拿九稳,北海,剑胆柔情,刘邦测号,刘棋,凌波仙子,冒险,八卦测码,全力夺金,克敌制胜,元始天尊,偷闲看彩,信码由缰,
+        人定胜天,亡灵天涯,乱世佳人,乡巴老,乐透达人,中奖秘笈,中奖有我,中奖之路,中号在身,东方花琦,专长杀号,专研独胆,不老松,三石,一纸乱言
+        ,一如既往,一代彩神,一人留,FC达人
+    </sql>
+
+
+    <select id="selectSanDExpertData" resultMap="sandexpertdataResultMap">
+        select * from sandp.expertdata
+    </select>
+
+    <select id="selectSanDExpertDatabyexpert" resultMap="sandexpertdataResultMap" statementType="STATEMENT">
+        select id, issue, ${columns} from sandp.expertdata
+    </select>
+
+<!--    <insert id="insertSandexpertData" statementType="STATEMENT">
+        insert into sandp.expertdata (
+           issue, ${columns1}, ${columns2}, ${columns3}
+        )
+        values (
+        #{issue,jdbcType=VARCHAR}, #{columns1_data,jdbcType=VARCHAR},#{columns2_data,jdbcType=VARCHAR},
+        #{columns3_data,jdbcType=VARCHAR}}
+        )
+    </insert>-->
+    <insert id="insertSandexpertData" parameterType="com.spider.lottery.pojo.SanDExpertData">
+        insert into sandp.expertdata (
+          <include refid="BaseColumnList"/>
+        )
+        values (
+        #{id,jdbcType=INTEGER},#{issue,jdbcType=VARCHAR},#{LSYG,jdbcType=VARCHAR},#{HBC,jdbcType=VARCHAR},#{GS,jdbcType=VARCHAR},
+        #{LBH,jdbcType=VARCHAR},#{MSDD,jdbcType=VARCHAR},#{FYG,jdbcType=VARCHAR},#{FHXY,jdbcType=VARCHAR},
+        #{LXWC,jdbcType=VARCHAR},#{LXCJ,jdbcType=VARCHAR},#{LXY,jdbcType=VARCHAR},#{XBTX,jdbcType=VARCHAR},
+        #{YLCC,jdbcType=VARCHAR},#{YDCC,jdbcType=VARCHAR},#{SQ,jdbcType=VARCHAR},#{JYTD,jdbcType=VARCHAR},
+        #{JDCL,jdbcType=VARCHAR},#{JCDX,jdbcType=VARCHAR},#{ZLZY,jdbcType=VARCHAR},#{LLB,jdbcType=VARCHAR},
+        #{LHDD,jdbcType=VARCHAR},#{YHSR,jdbcType=VARCHAR},#{YCY,jdbcType=VARCHAR},#{GCXZ,jdbcType=VARCHAR},
+        #{BBT,jdbcType=VARCHAR},#{BBNS,jdbcType=VARCHAR},#{MMGS,jdbcType=VARCHAR},#{YBYZ,jdbcType=VARCHAR},
+        #{HSSC,jdbcType=VARCHAR},#{HQK,jdbcType=VARCHAR},#{LQZJ,jdbcType=VARCHAR},#{YMDW,jdbcType=VARCHAR},
+        #{SDFS,jdbcType=VARCHAR},#{DMSS,jdbcType=VARCHAR},#{DZS,jdbcType=VARCHAR},#{LYSC,jdbcType=VARCHAR},
+        #{MNSH,jdbcType=VARCHAR},#{ZHGS,jdbcType=VARCHAR},#{HC,jdbcType=VARCHAR},#{JYQD,jdbcType=VARCHAR},
+        #{ZWH,jdbcType=VARCHAR},#{WCSQ,jdbcType=VARCHAR},#{CC,jdbcType=VARCHAR},#{CYJ,jdbcType=VARCHAR},
+        #{SMD,jdbcType=VARCHAR},#{SSPJ,jdbcType=VARCHAR},#{SZZ,jdbcType=VARCHAR},#{ZTYC,jdbcType=VARCHAR},
+        #{ZYX,jdbcType=VARCHAR},#{KDSL,jdbcType=VARCHAR},#{KDZJ,jdbcType=VARCHAR},#{KJZ,jdbcType=VARCHAR},
+        #{XRYM,jdbcType=VARCHAR},#{ZNX,jdbcType=VARCHAR},#{BCZF,jdbcType=VARCHAR},#{BWXJ,jdbcType=VARCHAR},
+        #{BFBZ,jdbcType=VARCHAR},#{FKCM,jdbcType=VARCHAR},#{WCWT,jdbcType=VARCHAR},#{WCDS,jdbcType=VARCHAR},
+        #{WYJ,jdbcType=VARCHAR},#{DDTY,jdbcType=VARCHAR},#{DSYZ,jdbcType=VARCHAR},#{JS,jdbcType=VARCHAR},
+        #{AJDZ,jdbcType=VARCHAR},#{JD,jdbcType=VARCHAR},#{XIAOY,jdbcType=VARCHAR},#{WRKD,jdbcType=VARCHAR},
+        #{HSMW,jdbcType=VARCHAR},#{CDW,jdbcType=VARCHAR},#{MSGQ,jdbcType=VARCHAR},#{SZY,jdbcType=VARCHAR},
+        #{SSHH,jdbcType=VARCHAR},#{MTYC,jdbcType=VARCHAR},#{CMBC,jdbcType=VARCHAR},#{LXL,jdbcType=VARCHAR},
+        #{LK,jdbcType=VARCHAR},#{SLZJ,jdbcType=VARCHAR},#{SHZS,jdbcType=VARCHAR},#{SPL,jdbcType=VARCHAR},
+        #{SHCZ,jdbcType=VARCHAR},#{MS,jdbcType=VARCHAR},#{PGAC,jdbcType=VARCHAR},#{MQ,jdbcType=VARCHAR},
+        #{XINY,jdbcType=VARCHAR},#{YJC,jdbcType=VARCHAR},#{WCBB,jdbcType=VARCHAR},#{KSX,jdbcType=VARCHAR},
+        #{SZK,jdbcType=VARCHAR},#{ZXSS,jdbcType=VARCHAR},#{ZLR,jdbcType=VARCHAR},#{JSCM,jdbcType=VARCHAR},
+        #{DDD,jdbcType=VARCHAR},#{CZJR,jdbcType=VARCHAR},#{CMXT,jdbcType=VARCHAR},#{CSLB,jdbcType=VARCHAR},
+        #{CSX,jdbcType=VARCHAR},#{CPGG,jdbcType=VARCHAR},#{CSR,jdbcType=VARCHAR},#{CYS,jdbcType=VARCHAR},
+        #{CJLD,jdbcType=VARCHAR},#{CWBZ,jdbcType=VARCHAR},#{CZJZ,jdbcType=VARCHAR},#{DCCC,jdbcType=VARCHAR},
+        #{KXMC,jdbcType=VARCHAR},#{BYSH,jdbcType=VARCHAR},#{XGKD,jdbcType=VARCHAR},#{SYSD,jdbcType=VARCHAR},
+        #{DDLS,jdbcType=VARCHAR},#{DDZC,jdbcType=VARCHAR},#{DDZJ,jdbcType=VARCHAR},#{AR,jdbcType=VARCHAR},
+        #{AD,jdbcType=VARCHAR},#{AQCG,jdbcType=VARCHAR},#{SW,jdbcType=VARCHAR},#{CDK,jdbcType=VARCHAR},
+        #{ZYSS,jdbcType=VARCHAR},#{MZSC,jdbcType=VARCHAR},#{TXW,jdbcType=VARCHAR},#{TZ,jdbcType=VARCHAR},
+        #{TYC,jdbcType=VARCHAR},#{TCCN,jdbcType=VARCHAR},#{TTXX,jdbcType=VARCHAR},#{DLT,jdbcType=VARCHAR},
+        #{YYXY,jdbcType=VARCHAR},#{WHJS,jdbcType=VARCHAR},#{WWDC,jdbcType=VARCHAR},#{TE,jdbcType=VARCHAR},
+        #{HZGS,jdbcType=VARCHAR},#{HQMM,jdbcType=VARCHAR},#{MYTX,jdbcType=VARCHAR},#{ZRCJ,jdbcType=VARCHAR},
+        #{ZZCX,jdbcType=VARCHAR},#{GLTZ,jdbcType=VARCHAR},#{SYL,jdbcType=VARCHAR},#{YZYM,jdbcType=VARCHAR},
+        #{BT,jdbcType=VARCHAR},#{NFCS,jdbcType=VARCHAR},#{NGA,jdbcType=VARCHAR},#{BZRJ,jdbcType=VARCHAR},
+        #{BX,jdbcType=VARCHAR},#{SNJW,jdbcType=VARCHAR},#{BH,jdbcType=VARCHAR},#{JDRQ,jdbcType=VARCHAR},
+        #{LBCH,jdbcType=VARCHAR},#{LQ,jdbcType=VARCHAR},#{LBXZ,jdbcType=VARCHAR},#{MX,jdbcType=VARCHAR},
+        #{BGCM,jdbcType=VARCHAR},#{QLDJ,jdbcType=VARCHAR},#{KDZS,jdbcType=VARCHAR},#{YSTZ,jdbcType=VARCHAR},
+        #{TXKC,jdbcType=VARCHAR},#{XMYJ,jdbcType=VARCHAR},#{RDST,jdbcType=VARCHAR},#{WLTY,jdbcType=VARCHAR},
+        #{LSJR,jdbcType=VARCHAR},#{XBL,jdbcType=VARCHAR},#{LTDR,jdbcType=VARCHAR},#{ZJMJ,jdbcType=VARCHAR},
+        #{ZJYW,jdbcType=VARCHAR},#{ZJZL,jdbcType=VARCHAR},#{ZHZS,jdbcType=VARCHAR},#{DFHQ,jdbcType=VARCHAR},
+        #{ZCSH,jdbcType=VARCHAR},#{ZYDD,jdbcType=VARCHAR},#{BLS,jdbcType=VARCHAR},#{SS,jdbcType=VARCHAR},
+        #{YZLY,jdbcType=VARCHAR},#{YRJW,jdbcType=VARCHAR},#{YDCS,jdbcType=VARCHAR},#{YRL,jdbcType=VARCHAR},
+        #{FCDR,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+</mapper>
